@@ -1,7 +1,7 @@
 let a = "hello";
 console.log('Type of a ',typeof a);
 
-a = 10;
+//a = 10;
 console.log('Type of a ',typeof a);
 
 /*
