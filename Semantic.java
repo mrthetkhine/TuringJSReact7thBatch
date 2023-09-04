@@ -4,5 +4,6 @@ public class Semantic
     {
         int a = 3/2;
         System.out.println(a);
+        System.out.println(3.0/2);
     }
 }
