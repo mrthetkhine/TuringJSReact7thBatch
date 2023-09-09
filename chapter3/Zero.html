@@ -1,0 +1,23 @@
+<html>
+    <script>
+      
+      let posZero = 0;
+      let negZero = -0;
+      
+      console.log('Pos zero ',posZero);
+      console.log('Neg zero ',negZero);
+
+      console.log('Zero == zero ', posZero == negZero);
+      console.log('Infinity == -Infinity ', 1/posZero == 1/negZero);
+
+      let x = 0.3 - 0.2;
+      console.log('X ',x == 0.1);
+      console.log('X ',x);
+      x = 0.3;
+      console.log('X ',x);
+
+      let str = "1"+"0".repeat(100);
+      let num = BigInt(str);
+      console.log('Num ',num+ BigInt(1));
+    </script>
+</html>

@@ -1,0 +1,30 @@
+<html>
+    <script>
+      
+      let price = 13;
+      let quantity = 10;
+
+      let str = 'Hello "good mornig" '+ price+' quantity '+quantity;
+      console.log('str ',str);
+      console.log('typeof str ',typeof str);
+
+      str = "Hello 'good morning'";
+      console.log('str ',str);
+
+      str = "Hello \"good\r\n \
+      morning\"";
+      console.log('str ',str);
+
+      str = "Hello \n" 
+            +"How are";
+      console.log('str ',str);
+
+     
+      str = `
+      price ${price}
+      Quantity ${quantity}
+      Total ${price*quantity}
+      `;
+      console.log('str ',str);
+    </script>
+</html>
