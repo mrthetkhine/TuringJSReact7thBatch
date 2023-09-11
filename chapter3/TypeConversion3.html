@@ -1,0 +1,35 @@
+<html>
+    <script>
+      
+     let obj = {
+        name : 'TK',
+        age : 39,
+        method()
+        {
+            console.log('method invoked');
+            return 1;
+        },
+        
+        toString()
+        {
+            console.log('toString invoke');
+            //return 'Hello';
+            return 3;
+        },
+        
+        valueOf()
+        {
+            console.log('value of invoked');
+            return undefined;
+        }
+     };
+     console.log('Obj ',obj.method());
+     console.log('Obj toString ',obj.toString());
+     console.log(' ""+Obj ',''+obj);
+
+     console.log('!! obj ', !!obj);
+
+     console.log('+ obj ', +obj);
+    </script>
+
+</html>

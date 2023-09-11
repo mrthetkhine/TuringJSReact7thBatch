@@ -1,0 +1,37 @@
+<html>
+    <script>
+      
+      let a = 10;
+      let b = 20;
+
+      a = b;//copy semantics
+      b++;
+
+      console.log('B ',b);
+      console.log('A ',a);
+
+      let obj = {
+        value : 100
+      };
+
+      let obj2;
+      obj2 = obj; //reference semantics
+
+      obj.value ++;
+      console.log('Obj ',obj);
+      console.log('Obj2 ',obj2);
+
+      obj2 = {
+        value : 10
+      };
+      console.log('Obj ',obj);
+      console.log('Obj2 ',obj2);
+      obj.value ++;
+
+      console.log('Obj ',obj);
+      console.log('Obj2 ',obj2);
+
+      obj.value = obj2.value;
+    </script>
+
+</html>
