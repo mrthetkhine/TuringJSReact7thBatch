@@ -1,0 +1,19 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+        let arr = [10,[20,30]];
+        console.log('Arr ',arr);
+
+        let [a,b] = arr;
+        console.log('A ',a, ' B ',b);
+
+        let c;
+        arr = [10,20,30,40];
+        [a,,... b] = arr;
+
+        console.log('A ',a, ' B ',b);
+    </script>
+
+</html>

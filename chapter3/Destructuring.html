@@ -1,0 +1,45 @@
+<html>
+    <body>
+        <div id="something">Something</div>
+    </body>
+    <script>
+        let a = 10;
+        let b = 20;
+        let temp  = a;//temp -10
+        a = b;// a- 20
+        b = temp;//b -10;
+
+        console.log('A ',a, ' B ',b);
+
+        let arr = [10,20];
+        [a,b] = arr;
+        /*
+        a = arr[0]
+        b = arr[1]
+        */
+
+        console.log('A ',a, ' B ',b);
+
+        function div(a,b)
+        {
+            if(b == 0)
+            {
+                return [undefined,new Error('Division by zero')];
+            }
+            else
+            {
+                return [a/b,undefined]
+            }
+        }
+        let [result,error] = div(10,3);
+        if(error)
+        {
+            console.log('error ',error);
+        }
+        else
+        {
+            console.log('Result ',result);
+        }
+    </script>
+
+</html>
