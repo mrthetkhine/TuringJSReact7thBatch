@@ -1,0 +1,42 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+      console.log('! "false" ', !"false");
+
+      let a = 10;
+      let c = ++ a;
+      console.log('C ',c, ' A ',a);  
+
+      c  = a ++;
+      console.log('C ',c, ' A ',a);  
+
+      c = -c;
+      console.log('C ',c);  
+
+      a  = '100';
+      let b = 20;
+      let obj = {
+        valueOf ()
+        {
+            return 10;
+        }
+      }
+      c = a * b + obj;
+      console.log('C ',c);  
+
+      c = false + 10 + true;
+      console.log('C ',c);  
+
+      obj = {
+        valueOf()
+        {
+            return "10"
+        }
+      }
+      c = 20 + obj;
+      console.log('C ',c);
+    </script>
+
+</html>

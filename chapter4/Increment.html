@@ -1,0 +1,31 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+      console.log('! "false" ', !"false");
+
+      let a = 10;
+      let c = ++ a;
+      console.log('C ',c, ' A ',a);  
+
+      //++ 3;
+      //console.log('Done');
+
+      let str = "10";
+      console.log('Typeof str ',typeof str);
+      ++ str;
+
+      console.log('Typeof str ',typeof str);
+
+      let obj = {
+        valueOf()
+        {
+            return "100"
+        }
+      };
+      obj ++;
+      console.log("Obj ",obj);
+    </script>
+
+</html>
