@@ -1,0 +1,30 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+    function getTrue()
+      {
+        console.log('GetTrue ');
+        return true;
+      }
+      function getFalse()
+      {
+        console.log('Get False');
+        return false;
+      }
+      //If LHS is falsy -> return LHS
+      console.log(' false || "something" ', false || "something");
+      console.log(' false || true ', false || true);
+      console.log(' 0 || "something" ', 0 || "something");
+      console.log(' 0 || undefined ', 0 || undefined);
+      console.log(' getFalse() || getTrue ', getFalse() || getTrue());
+
+      console.log(' 1 || undefined ', 1 || undefined);
+      console.log(' {} || "something" ', {} || 'something');
+      console.log(' getTrue() || getTrue ', getTrue() || getTrue());
+      console.log(' getTrue() | getTrue ', getTrue() | getTrue());
+    </script>
+
+</html>

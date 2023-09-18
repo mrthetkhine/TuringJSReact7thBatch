@@ -1,0 +1,52 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+
+      let raining = true;
+      let needToGoOut = false;
+
+      if( raining && needToGoOut)
+      {
+        console.log('Grab unbrella');
+      }
+      else
+      {
+        console.log('Do nothing');
+      }
+      function getTrue()
+      {
+        console.log('GetTrue ');
+        return 'true';
+      }
+      function getFalse()
+      {
+        console.log('Get False');
+        return false;
+      }
+      //If LHS is falsy -> return LHS
+      console.log(' false && "something" ', false && "something");
+      console.log(' null && "something" ', null && "something");
+      console.log(' 0 && "something" ', 0 && "something");
+      console.log(' "" && "something" ', "" && "something");
+      console.log(' getFalse() && getFalse() ', getFalse() && getFalse());
+      console.log(' getTrue() && getFalse() ', getTrue() && getFalse());
+
+      //If LHS is truthy -> return RHS
+      console.log(' true && "something" ', true && "something");
+      console.log(' 1 && "something" ', 1 && "something");
+      console.log(' "something" && null ', "something" &&  null);
+      console.log(' "something" && undefined ', "something" &&  undefined);
+      console.log(' true && {} ', true &&  {});
+
+      console.log(' getFalse() & getFalse() ', getFalse() & getFalse());
+      /*
+      if(raining)
+      {
+        console.log('Raining');
+      }*/
+      raining && console.log('Raining');
+    </script>
+
+</html>
