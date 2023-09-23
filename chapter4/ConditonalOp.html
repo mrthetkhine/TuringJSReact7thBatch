@@ -1,0 +1,40 @@
+<html>
+    <body>
+        
+    </body>
+    <script>
+        let raining = true;
+        let str;
+        /*
+        if(raining)
+        {
+            str = 'Take Umbrella';
+        }
+        else
+        {
+            str = 'Do not take umbrella';
+        }
+        */
+       str = raining? 'Take Umbrella' : 'Do not take umbrella';
+
+       if(raining)
+       {
+            console.log('Take umbrella');
+       }
+       else
+       {
+            console.log('Do not take umbrella');
+       }
+        //console.log('Str ',str);
+        raining?console.log('take umbrella'):console.log('Do not take umbrella');
+
+        const config = {
+            width : 100,
+            height: 0,
+        }
+        //config.height = config.height || 200;
+        config.height = config.height?? 200;
+        console.log('Config ',config);
+    </script>
+
+</html>
