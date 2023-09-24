@@ -1,0 +1,45 @@
+<html>
+
+<body>
+
+</body>
+
+<script>
+    let arr = [10,20,30,40];
+
+    
+    for(const item of arr) // item = arr[i];
+    {
+        console.log('Item ',item);
+        //item *= 2;
+    }
+    console.log('Arr ',arr);
+    
+   for(let i=0; i < arr.length; i++)
+   {
+        console.log('arr['+i +' ] ',arr[i]);
+        arr[i] *= 2;
+   }
+   console.log('Arr ',arr);
+
+   let obj = {
+        name  :'TK',
+        age : 39
+   };
+   for(const key of  Object.keys(obj))
+   {
+    console.log('Key ',key, ' value=>', obj[key]);
+   }
+   console.log('Keys ',Object.keys(obj));
+
+   for(const value of  Object.values(obj))
+   {
+    console.log('value ',value);
+   }
+   for(const [key,value] of  Object.entries(obj))
+   {
+    console.log('key',key, 'value ',value);
+   }
+</script>
+
+</html>

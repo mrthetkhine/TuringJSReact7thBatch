@@ -1,0 +1,31 @@
+<html>
+
+<body>
+
+</body>
+
+<script>
+    let frequency = {};
+    for (const letter of "mississippi") {
+        if (frequency[letter]) {
+            frequency[letter]++;
+        } else {
+            frequency[letter] = 1; //{'m':1}
+        }
+    }
+    console.log('Frequency ',frequency);
+    let text = "Na na na na na na na na Batman!"; 
+    let wordSet = new Set(text.split(" "));
+    console.log('WordSet ',wordSet);
+
+    for(const word of wordSet)
+    {
+        console.log('Word ',word);
+    }
+    let m = new Map([[1, "one"]]);
+    for(const [key, value] of m) {
+        console.log('Key ',key, ' value ',value);
+    }
+</script>
+
+</html>
