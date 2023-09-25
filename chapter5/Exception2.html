@@ -1,0 +1,46 @@
+<html>
+
+<body>
+
+</body>
+
+<script>
+ 
+ //debugger;
+ function div(a,b)
+ {
+    if(a == 0 && b == 0 )
+    {
+        throw new Error('A and b is zero');
+    }
+    else
+    {
+        return a/b;
+    }
+   
+ }
+ function another()
+ {
+    try
+    {
+        let data = div(0,0); //NaN 
+        console.log('Div ',data);
+        return data;
+    }
+    catch(e)
+    {
+        console.log('Error ',e.message);
+        //return 100;
+        throw e;
+    }
+    finally
+    {
+        console.log('Finally run');
+        return 200;
+    }
+ }
+ let result = another();
+ console.log('End ',result);
+</script>
+
+</html>
