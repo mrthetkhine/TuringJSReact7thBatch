@@ -1,0 +1,21 @@
+<html>
+    <script>
+        let data = { 
+            x: 1 ,
+            y : 100,
+            arr : [100],
+            method()
+            {
+                console.log('Hello');
+            }
+        };
+        let another = {...data};// another.arr = data.arr
+
+        data.arr.push(200);
+        console.log('Another ',another);
+        
+        let deepClone = JSON.parse(JSON.stringify(data));
+        data.arr.push(300);
+        console.log('Deep Clone ',deepClone);
+    </script>
+</html>

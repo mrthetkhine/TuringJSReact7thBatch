@@ -1,0 +1,36 @@
+<html>
+    <script>
+        let target = { x: 1 };
+        let source = { y: 2, z: 3 }; 
+        
+        for (let key of Object.keys(source)) 
+        {
+            target[key] = source[key];
+        }
+        console.log('target ',target);
+
+        let obj = Object.assign({x: 100},target,{k : 10});
+        //temp = {target,k}
+        //temp = 
+        console.log('Obj ',obj);
+        console.log('target ',target);
+
+        let defaultConfig = {
+            width : 200,
+            height : 100,
+        }
+        let param = {
+            width: 40,
+            another : 'Hello'
+        };
+        let dummy = {
+
+        };
+        //let obj2 = Object.assign(dummy,defaultConfig,param);
+        let obj2 = { ...dummy,...defaultConfig,...param};
+        console.log('Obj2 ',obj2);
+        console.log('defaultConfig ',defaultConfig);
+        console.log('Dummy ',dummy);
+        console.log('dummy ',dummy == obj2);
+    </script>
+</html>

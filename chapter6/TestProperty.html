@@ -1,0 +1,26 @@
+<html>
+    <script>
+        let parent = {
+            x : 100,
+            [Symbol('name')]:'Hello'
+        };
+        console.log('Parent ',parent);
+        let obj = Object.create(parent);
+        obj.y = 200;
+        console.log('Obj ',obj);
+
+        console.log('x in obj ','x' in obj);
+        console.log('hasOwnProperty x ',obj.hasOwnProperty('x'));
+        console.log('hasOwnProperty y ',obj.hasOwnProperty('y'));
+
+        for(let prop in obj)
+        {
+            console.log('Prop ',prop);
+        }
+        console.log('isEnumerable toString ',obj.propertyIsEnumerable('toString'));
+        console.log('Keys ',Object.keys(obj));
+        console.log('Object.getOwnPropertyNames ',Object.getOwnPropertyNames(Object));
+        console.log('Object.getOwnPropertySymbols ',Object.getOwnPropertySymbols(parent));
+        console.log('Reflect ',Reflect.ownKeys(parent));
+    </script>
+</html>

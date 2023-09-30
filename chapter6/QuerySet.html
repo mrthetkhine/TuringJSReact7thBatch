@@ -1,0 +1,27 @@
+<html>
+    <script>
+        let fName = 'age';
+        let obj  = {
+            name : 'TK',
+            [fName] : 39,
+            address : {
+                township : 'YKN',
+                city : 'YGN'
+            },
+            address2 : {
+                township : 'YKN2',
+                city : 'YGN2'
+            },
+            false : 'False',
+            'another field':"hello"
+        };
+        console.log('Obj ',obj);
+        console.log('Obj ',obj.address);
+
+        let fieldName = 'address';
+        console.log('Obj ',obj[fieldName+'2']);
+        console.log('Obj ',obj['false']);
+        console.log('Obj ',obj['another field']);
+        
+    </script>
+</html>

@@ -1,0 +1,22 @@
+<html>
+    <script>
+        let fName = 'age';
+        let obj  = {
+           '0':100,
+           '1':200,
+           /*
+           address : {
+            //city : 'YGN'
+           }*/
+        };
+        console.log('Obj ',obj[0]);
+       
+        let mapping  = {};
+        mapping['id-1'] = "User 1";
+        console.log('Id-1 ',mapping['id-1']);
+        console.log('Mapping ',obj?.address?.city);
+        console.log(delete obj[0]);
+        console.log('Obj ',obj);
+        console.log('delete prototype ',delete Object.prototype);
+    </script>
+</html>

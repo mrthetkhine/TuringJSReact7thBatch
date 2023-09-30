@@ -1,0 +1,41 @@
+<html>
+    <script>
+        'use strict';
+        let point = { 
+            x: 1 ,
+            y : 100,
+            display()
+            {
+                console.log('Point  ',this.x, ', ',this.y);
+            },
+            toJSON()
+            {
+                console.log('toJSON invoked');
+                return {
+                    posX : this.x,
+                    posY : this.y
+                };
+            }
+        };
+        point.display();
+
+        let str = JSON.stringify(point);
+        console.log('Str ',str);
+        //push(item,element)
+        let stack = {
+            items : [],
+            push(element)
+            {
+                this.items.push(element);
+            },
+            pop()
+            {
+                return this.items.pop();
+            }
+
+        };
+        stack.push('One');
+        stack.push('Two');
+        console.log('Stack ',stack);
+    </script>
+</html>
