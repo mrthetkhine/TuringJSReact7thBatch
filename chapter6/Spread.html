@@ -1,0 +1,23 @@
+<html>
+    <script>
+        let x = 10;
+        let y = 20;
+
+        let obj = {
+            x ,
+            y ,
+            /*
+            display: function()
+            {
+                console.log('Display');
+            }*/
+            display()
+            {
+                console.log('Display');
+            }
+        };
+        obj.display();
+       let another = { ...obj};
+       console.log('Another ',another);
+    </script>
+</html>
