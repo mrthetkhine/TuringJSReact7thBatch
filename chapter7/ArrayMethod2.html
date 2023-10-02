@@ -1,0 +1,26 @@
+<html>
+    <script>
+       let arr = [10,20,30,-28];
+       
+       const isGreaterThan20 = (x)=>x > 20; 
+
+       let element = arr.find(isGreaterThan20);
+       console.log('Element ',element);
+
+       let index = arr.findIndex(isGreaterThan20);
+       console.log('Index ',index);
+
+       const isPositive = (x)=> x >0;
+       let allPositive = arr.every(isPositive);
+       console.log('All positive ',allPositive)
+       /*
+       let result = true;
+       for()
+       {
+        result &= isPositive(arr[i])
+       }
+       */
+      let some = arr.some(isPositive);
+      console.log('Some ',some)
+    </script>
+</html>

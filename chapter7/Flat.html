@@ -1,0 +1,12 @@
+<html>
+    <script>
+       let arr = [1,2,3,4];
+
+       let arr2 = arr.flatMap(x=>[x,x*2]); //[[1,2],[2,4]] =>[1,2,2,4]
+       console.log('Arr2 ',arr2); 
+       //console.log('Arr2.flat ',arr2.flat()); 
+       
+       arr = [[1,2],[3,[4,5]] ];
+       console.log('Flat ',arr.flat(2));
+    </script>
+</html>

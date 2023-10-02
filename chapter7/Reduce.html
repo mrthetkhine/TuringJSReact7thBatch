@@ -1,0 +1,55 @@
+<html>
+    <script>
+       let arr = [1,2,3,-4];
+    
+       function sum(a,b)
+       {
+        console.log('A ',a, ' B ',b);
+        return a+b;
+       }
+       let total = arr.reduce(sum);
+       console.log('Total ',total);
+
+       let min = arr.reduce((a,b)=>Math.min(a,b));
+       console.log('Min ',min);
+       
+        let objArr =[
+            {
+                name : 'Aung Aung',
+                age : 23,
+                gender : 'male'
+            },
+            {
+                name : 'Mya Aung',
+                age : 25,
+                gender : 'male'
+            },
+            {
+                name : 'Mya Mya',
+                age : 30,
+                gender : 'female'
+            },
+            {
+                name : 'Hla Hla',
+                age : 17,
+                gender : 'female'
+            },
+            {
+                name : 'Aung Min',
+                age : 14,
+                gender : 'male'
+            },
+        ];
+        
+        const isMale = (obj)=>obj.gender == 'male';
+        function younger(objA,objB)
+        {
+            return objA.age >objB.age?objB:objA;
+        }
+        let youngest = objArr
+                        .filter(isMale)
+                        .reduce(younger);
+        console.log('Names ',youngest.name);
+        
+    </script>
+</html>

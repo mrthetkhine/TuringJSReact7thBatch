@@ -1,0 +1,21 @@
+<html>
+    <script>
+       let arr = [
+            [10,20,30],
+            [40,50,60],//arr[1] =
+            [70,80,90,100]
+       ];
+       
+       for(let i=0;i < arr.length;i++)
+       {
+            console.log('Arr ',arr[i]);
+            //let inner = arr[i];
+            for(let j=0;j < arr[i].length;j++)
+            {
+                console.log('Inner ',arr[i][j]);
+                arr[i][j] *= 2;
+            }
+       }
+       console.log('Arr ',arr);
+    </script>
+</html>

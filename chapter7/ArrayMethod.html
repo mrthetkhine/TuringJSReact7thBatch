@@ -1,0 +1,66 @@
+<html>
+    <script>
+       let arr = [10,20,30];
+       
+        function print(item)
+        {
+            console.log('Item ',item);
+        }
+        arr.forEach(print);
+
+        function toUpper(str)
+        {
+            return str.toUpperCase();
+        }
+        console.log('ToUpper ',toUpper('hello'));
+
+        let strArr = ['hello','apple','orange'];
+
+        let upperCase = [];
+        /*
+        for(let i=0;i< strArr.length;i++)
+        {
+            upperCase.push(toUpper(strArr[i]));
+        }*/
+        upperCase = strArr.map(str=>toUpper(str));
+
+        console.log('StrArr ',strArr);
+        console.log('Uppercase arr ',upperCase);
+
+        let objArr =[
+            {
+                name : 'Aung Aung',
+                age : 23,
+                gender : 'male'
+            },
+            {
+                name : 'Mya Aung',
+                age : 25,
+                gender : 'male'
+            },
+            {
+                name : 'Mya Mya',
+                age : 30,
+                gender : 'female'
+            },
+            {
+                name : 'Hla Hla',
+                age : 17,
+                gender : 'female'
+            },
+            {
+                name : 'Aung Min',
+                age : 34,
+                gender : 'male'
+            },
+        ];
+        /*
+        function getName(obj)
+        {
+            return obj.name;
+        }
+        */
+        let names = objArr.map(obj=>obj.name);
+        console.log('Names ',names);
+    </script>
+</html>

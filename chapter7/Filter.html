@@ -1,0 +1,62 @@
+<html>
+    <script>
+       let arr = [10,20,-30,15,-87];
+       function isPositive(num)
+       {
+        return num>0;
+       }
+       let posArray = arr.filter(isPositive);
+       
+       console.log('Arr ',arr);
+       console.log('Pos Array ',posArray);
+
+
+        let objArr =[
+            {
+                name : 'Aung Aung',
+                age : 23,
+                gender : 'male'
+            },
+            {
+                name : 'Mya Aung',
+                age : 25,
+                gender : 'male'
+            },
+            {
+                name : 'Mya Mya',
+                age : 30,
+                gender : 'female'
+            },
+            {
+                name : 'Hla Hla',
+                age : 17,
+                gender : 'female'
+            },
+            {
+                name : 'Aung Min',
+                age : 34,
+                gender : 'male'
+            },
+        ];
+        /*
+        function getName(obj)
+        {
+            return obj.name;
+        }
+        */
+       /*
+       for()
+       {
+        if(obj.gender=='male')
+        {
+            arr.push(obj.name)
+        }
+       }
+       */
+        const isMale = (obj)=>obj.gender == 'male';
+        let names = objArr
+                        .filter(isMale)
+                        .map(obj=>obj.name);
+        console.log('Names ',names);
+    </script>
+</html>
