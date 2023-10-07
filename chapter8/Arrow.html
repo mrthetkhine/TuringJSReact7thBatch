@@ -1,0 +1,21 @@
+<html>
+    <script>
+     
+        function add(x,y)
+        {
+            return x+y;
+        } 
+        let result = add(10,2);
+
+        //let sum =(x,y) => x + y;
+        let sum = (x,y)=>{
+            console.log('Sum invoked');
+            return  x + y;
+        };
+        
+        console.log('Sum ',sum(10,2));
+
+        let getObj = (x)=>({x});
+        console.log('getObj ',getObj(10));
+    </script>
+</html>

@@ -1,0 +1,33 @@
+<html>
+    <script>
+
+        //x parameter
+        function change(x)
+        {
+            x ++;
+        }
+        let data = 10;
+        change(10);//x=data;//x =10;//10,data-argument
+        console.log('Data ',data);
+
+        function changeObj(obj)
+        {
+            obj.x ++;
+        }
+       
+        let objA = {
+            x : 100
+        };
+        changeObj(objA); // obj = objA
+        console.log('Obj.x ',objA.x);
+
+        function changeObjTwo(obj)// obj = objA
+        {
+            obj = {
+                x : 2000
+            };
+        }
+        changeObjTwo(objA); // obj = objA
+        console.log('Obj.x ',objA.x); 
+    </script>
+</html>

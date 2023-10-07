@@ -1,0 +1,25 @@
+<html>
+    <script>
+
+        function greet(name)
+        {
+            console.log('Hello ',name);
+        }
+        greet('Aung Aung');
+        greet('Aung Naing');
+       
+        function add(x,y)
+        {
+            return x+y;
+        } 
+        let result = add(10,2);
+        console.log('Result ',result);
+
+        function upperCaseAndGetLength(str)
+        {
+            return [str.toUpperCase(),str.length];
+        }
+        let [upperCaseStr,length] = upperCaseAndGetLength('hello');
+        console.log('Str ',upperCaseStr, 'Length ',length);
+    </script>
+</html>

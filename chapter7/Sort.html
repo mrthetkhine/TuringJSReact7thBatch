@@ -1,0 +1,54 @@
+<html>
+    <script>
+
+       let arr = [110,10,11,20,50];
+       arr.sort((a,b)=> b-a);
+       console.log('Arr ',arr);
+      
+       let str = arr.join(':');
+       console.log('Str ',str);
+
+       let arr2 = str.split(':');
+       console.log('Arr2 ',arr2);
+
+       console.log('Arr2 ',arr2.toString());
+       let objArr = [
+        {
+            name : "Aung Aung",
+            age : 14,
+        },
+        {
+            name : "Myo Aung",
+            age : 8,
+        },
+        {
+            name : "Aung Naing",
+            age : 24,
+        },
+        {
+            name : "Aung Lin",
+            age : 10,
+        },
+        {
+            name : "Aung Win",
+            age : 8,
+        },
+       ];
+       function sortByAge(objA,objB)
+       {
+            if(objA.age == objB.age)
+            {
+                return objA.name.localeCompare(objB.name);
+            }
+            else
+            {
+                return objA.age - objB.age;
+            }
+       }
+       objArr.sort( sortByAge );
+       console.log('Obj Arr ',objArr);
+
+       objArr.reverse();
+       console.log('Obj Arr ',objArr);
+    </script>
+</html>
