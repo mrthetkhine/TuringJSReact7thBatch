@@ -1,0 +1,22 @@
+<html>
+    <script>
+        function max(first=-Infinity,...rest)
+        {
+            console.log('Arguments ',arguments)
+            console.log('First ',first);
+            console.log('Rest ',rest);
+
+            let maxElem = first;
+            for(const i of rest)
+            {
+                if(i >maxElem )
+                {
+                    maxElem = i;
+                }
+            }
+            return maxElem;
+        }
+        console.log(max(1));
+        console.log( max(100,2,353,4));
+    </script>
+</html>

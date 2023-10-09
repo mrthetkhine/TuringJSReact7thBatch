@@ -1,0 +1,17 @@
+<html>
+    <script>
+        function display(message,another,third)
+        {
+            if(arguments.length < display.length)
+            {
+                console.warn('Function ',this.name, ' required ', display.length,' but found ',arguments.length);
+            }
+            console.log('Message ',message, 'Another ',another, ' Third ',third);
+        }
+        console.log('Display length ',display.length, ' name ',display.name);
+        display('Hello');
+        display('Hello','hi');
+
+        console.log('display instanceof object ',display instanceof Object);
+    </script>
+</html>

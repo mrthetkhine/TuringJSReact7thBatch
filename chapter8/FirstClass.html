@@ -1,0 +1,28 @@
+<html>
+    <script>
+       function display()
+       {
+            console.log('Hello');
+       }
+       //Rule 1
+       let fun = display;
+
+       fun();
+       //Rule 2
+       function acceptFun(fun)
+       {
+            console.log('acceptFun');
+            fun();
+       }
+       acceptFun(display);
+
+       //Rule 3
+       function getFun()
+       {
+        console.log('Get fun');
+        return display;
+       }
+       getFun()();
+
+    </script>
+</html>

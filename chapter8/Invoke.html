@@ -1,0 +1,44 @@
+<html>
+    <script>
+        //"use strict";
+        function hello()
+        {
+            console.log('hello invoked');
+        }
+        hello();
+
+        let fun = hello;
+        //fun && fun();
+        fun?.();
+
+        let obj = {
+            name : 'TK',
+            display(message)
+            {
+                console.log('This ',this);
+                console.log('I am ',this.name, ' message ',message);
+            },
+            get age()
+            {
+                console.log('Getter age');
+                return 100;
+            }
+
+        };
+        obj.display();
+        let fun2 = obj.display;
+        console.log(obj.age);
+        let obj2 ={
+            name : 'Test'
+        }
+        fun2.call(obj2,'hello');
+        let arr = [10,2,-3,100];
+        console.log('Math.min ',Math.min.apply(Math,arr));
+        console.log('Math.min ',Math.min(...arr));
+
+        let fun3 = obj.display.bind(obj2);
+        fun3('Hi');
+
+        obj['display']();
+    </script>
+</html>

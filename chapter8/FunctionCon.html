@@ -1,0 +1,22 @@
+<html>
+    <script>
+        function Human(name)
+        {
+            this.name = name;
+            this.display = function()
+            {
+                console.log('Hello I am ',this.name);
+            }
+        }
+        function Teacher()
+        {
+        }
+        Teacher.prototype =  new Human('TK');
+        let obj = new Human('TK');
+        obj.display();
+        console.log(Human.__proptotype__);
+
+        let teacher = new Teacher();
+        teacher.display();
+    </script>
+</html>

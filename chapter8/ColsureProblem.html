@@ -1,0 +1,20 @@
+<html>
+    <script>
+        function getFuns()
+        {
+            let funs = [];
+            for(let i=0;i<5;i++)
+            {
+                let fun = function()
+                {
+                    console.log('Func i ',i);
+                }
+                funs.push(fun);
+            }
+            return funs;
+        }
+        let funs = getFuns();
+        funs[0]();
+        funs[1]();
+    </script>
+</html>

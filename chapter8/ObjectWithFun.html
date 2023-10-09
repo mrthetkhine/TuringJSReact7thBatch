@@ -1,0 +1,16 @@
+<html>
+    <script>
+        function Human(name,age)
+        {
+            this.name = name;
+            this.age = age;
+            this.display = function()
+            {
+                console.log('Name ',this.name, ' Age ',this.age);
+            }
+        }
+        let obj = new Human('Tk',39);
+        console.log('Obj ',obj);
+        obj.display();
+    </script>
+</html>

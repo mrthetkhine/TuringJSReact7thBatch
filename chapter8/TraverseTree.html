@@ -1,0 +1,55 @@
+<html>
+    <script>
+       /*{
+        node;
+        children :[ ]
+       } */
+
+       let root = {
+        node:'A',
+        children: [
+                {
+                    node : 'B',
+                    children:[
+                        {
+                            node : 'D',
+                            children:[]
+                        },
+                        {
+                            node : 'E',
+                            children:[]
+                        }
+                    ]
+                },
+                {
+                    node : 'C',
+                    children:[
+                        {
+                            node : 'F',
+                            children:[]
+                        },
+                        {
+                            node : 'G',
+                            children:[]
+                        }
+                    ]
+                },
+        ]
+       };
+       console.log('Tree ',root);
+       function traverse(tree)
+       {
+            if(tree.children.length ==0)
+            {
+                console.log(tree.node);
+            }
+            else
+            {
+                console.log(tree.node);
+                traverse(tree.children[0]); 
+                traverse(tree.children[1]);
+            }
+       }
+       traverse(root);
+    </script>
+</html>
