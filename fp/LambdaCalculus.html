@@ -1,0 +1,32 @@
+<html>
+    <script>
+        /*
+        function ONE()
+        {
+            return function(f)
+            {
+                return function(x)
+                {
+                    return f(x)
+                }
+            }
+        }
+        */
+        let ONE = f => x => f(x);
+        let TWO = f => x => f(f(x));
+
+        let SUCCESSOR = n => f => x => f( n(f)(x));
+        
+        let hi = (x)=>{
+            console.log(x);
+            return x;
+        }
+        let SUM =  m => n => n(SUCCESSOR)(m);
+        let FOUR = SUM(TWO)(TWO);
+        let FIVE = SUCCESSOR(FOUR);
+        //SUM(TWO)(TWO)(hi)('hello');
+        FIVE(hi)('hello');
+        let TEN = SUM(FIVE)(FIVE);
+        TEN(hi)('test ten');
+    </script>
+</html>

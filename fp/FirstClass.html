@@ -1,0 +1,33 @@
+<html>
+    <script>
+        //Rule 1
+        let hello = function()
+        {
+            console.log('Hello invoked');
+        }
+        hello();
+
+        function hi()
+        {
+            console.log('Hi invoked');
+        }
+        //Rule 2
+        function greet(fun)
+        {
+            console.log('Inside greet');
+            fun();
+        }
+        greet(hi);
+
+        //Rule 3
+        function getFun()
+        {
+            console.log('Inside get fun');
+            return function()
+            {
+                console.log('Another function returnedf from Getfun');
+            }
+        }
+        getFun()();
+    </script>
+</html>

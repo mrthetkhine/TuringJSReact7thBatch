@@ -1,0 +1,10 @@
+<html>
+    <script>
+        let str = "hello";
+        String.prototype.contains = function(subset)
+        {
+            return this.includes(subset);
+        }
+        console.log('Str.contains ',str.contains('hell'));
+    </script>
+</html>

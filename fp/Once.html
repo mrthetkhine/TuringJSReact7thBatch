@@ -1,0 +1,79 @@
+<html>
+    <script>
+        /*
+        let done = false;
+        function payment()
+        {
+            if(!done)
+            {
+                console.log('Payment API called');
+                done = true;
+            }        
+        }
+        let done2 =false;
+        function putOrder()
+        {
+            if(!done2)
+            {
+                console.log('PutOrder API called');
+                done2 = true;
+            }
+            
+        }
+        payment();
+        payment();
+
+        putOrder();
+        putOrder();
+        */
+        function payment(card)
+        {
+            console.log('Payment API called ',card);      
+        }
+        function putOrder(orderId,cardId)
+        {
+            console.log('PutOrder API called ',orderId, ' Card ',cardId);   
+        }
+
+        /*
+        function once(fn)
+        {
+            let done = false;
+            return function(...rest)
+            {
+               if(!done)
+               {
+                    done = true;
+                    return fn(...rest);
+               }
+            }
+        }*/
+        const once = fn => {
+            let done = false;
+            return (...args)=>(!done?(done=true,fn(...args)):undefined);
+        }
+        payment = once(payment);
+        payment('1122');
+        payment('1122');
+
+        function onceAndAfter(f,g)
+        {
+            let done = false;
+            return function(...rest)
+            {
+               if(!done)
+               {
+                    done = true;
+                    return f(...rest);
+               }
+               else
+               {
+                return g(...rest);
+               }
+            }
+        }
+        putOrder = onceAndAfter(putOrder,()=>console.log('PutOrder have been already called'));
+        putOrder(12,'1122');
+        putOrder(12,'1122');
+    </script>
+</html>
