@@ -1,0 +1,100 @@
+<html>
+    <script>
+        let arr = [
+            {
+                name : 'Aung Aung',
+                age : 20,
+                gender : 'Male',
+                city: 'Ygn',
+            },
+            {
+                name : 'Win Aung',
+                age : 30,
+                gender : 'Male',
+                city: 'Mdy',
+
+            },
+            {
+                name : 'Hla Hla',
+                age : 18,
+                gender : 'Female',
+                city: 'Kalaw',
+            },
+            {
+                name : 'Mya Mya',
+                age : 12,
+                gender : 'Female',
+                city: 'Kalaw',
+            },
+            {
+                name : 'Tin Lin',
+                age : 40,
+                gender : 'Male',
+                city: 'Mdy',
+            },
+        ];
+        let group = {};
+        /*
+        {
+            'Male':[],
+            'Female':[]
+        }
+        */
+       /*
+        for(let obj of arr)
+        {
+            if(!group[obj.gender])
+            {
+                group[obj.gender] = [obj];
+            }
+            else
+            {
+                group[obj.gender].push(obj);
+            }
+        }
+        console.log('Group ',group);
+        */ 
+
+
+        group  = arr.reduce( (group,obj)=>{
+            if(!group[obj.gender])
+            {
+                return {
+                    ...group,
+                   [obj.gender] :[obj]
+                }
+            }
+            else
+            {
+                return {
+                    ...group,
+                   [obj.gender] :[...group[obj.gender] ,obj]
+                }
+            }
+        },{});
+        console.log('Group ',group);           
+        //groupBy(arr,'city'); 
+        function groupBy(arr,prop)
+        {
+            return arr.reduce( (group,obj)=>{
+                if(!group[obj[prop]])
+                {
+                    return {
+                        ...group,
+                    [obj[prop]] :[obj]
+                    }
+                }
+                else
+                {
+                    return {
+                        ...group,
+                    [obj[prop]] :[...group[obj[prop]] ,obj]
+                    }
+                }
+            },{});
+        }          
+        const groupCity = groupBy(arr,'city');
+        console.log('Group City ',groupCity);
+        console.log('Gender ', groupBy(arr,'gender'));
+    </script>
+</html>

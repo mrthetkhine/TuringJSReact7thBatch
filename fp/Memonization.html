@@ -1,0 +1,33 @@
+<html>
+    <script>
+        function factorial(n)
+        {
+            console.log('Compute fn ',n);
+            let result = 1;
+            for(let i=1;i<=n;i++)
+            {
+                result*=i;
+            }
+            return result;
+        }
+        function memonize(fn)
+        {
+            let cache = {};
+            return function(x)
+            {
+                if(cache[x])
+                {
+                    return cache[x];
+                }
+                else
+                {
+                    cache[x] = fn(x);
+                    return cache[x];
+                }
+            }
+        }
+        let memonizeFactorial = memonize(factorial);
+        console.log('Fact ',memonizeFactorial(5));
+        console.log('Fact ',memonizeFactorial(5));
+    </script>
+</html>

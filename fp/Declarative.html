@@ -1,0 +1,52 @@
+<html>
+    <script>
+        let arr = [
+            {
+                name : 'Aung Aung',
+                age : 20,
+                gender : 'Male'
+            },
+            {
+                name : 'Win Aung',
+                age : 30,
+                gender : 'Male'
+            },
+            {
+                name : 'Hla Hla',
+                age : 18,
+                gender : 'Female'
+            },
+            {
+                name : 'Mya Mya',
+                age : 12,
+                gender : 'Female'
+            },
+            {
+                name : 'Tin Lin',
+                age : 40,
+                gender : 'Male'
+            },
+        ];
+        const names = arr.map(obj=>obj.name);
+        console.log('Names ',names);
+
+        const allFemale = arr.filter(obj=>obj.gender=='Female')
+                             .map(obj=>obj.name);
+        console.log('All Female ',allFemale);
+
+        const totalAge = arr.map(obj=>obj.age)
+                            .reduce((a,b)=>{
+                                console.log('A ',a,' B ',b);
+                                return a+b;
+                            });
+        console.log('Total Age ',totalAge);
+
+        const isFemale =obj=>obj.gender=='Female';
+        const getYounger = (objA,objB)=>{
+                                        return objA.age > objB.age ?objB: objA;
+                            }
+        const youngestFemale = arr.filter(isFemale)
+                                  .reduce(getYounger);  
+        console.log('Youngest female ',youngestFemale);                          
+    </script>
+</html>
