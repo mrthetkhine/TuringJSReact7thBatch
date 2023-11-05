@@ -1,0 +1,15 @@
+<html>
+    <script>
+        const range = (start, stop) =>  new Array(stop - start)
+                                            .fill(0)
+                                            .map((v, i) => start + i);
+        let oneTo4 = range(1,5);
+        console.log('OneTo4 ',oneTo4);
+
+        const factorial = (n) => range(1,n+1)
+                                .reduce( (a,b)=>a*b)
+        console.log('Factorial ',factorial(4));
+
+        range(0,5).forEach(x=>console.log(x));
+    </script>
+</html>

@@ -1,0 +1,26 @@
+<html>
+    <script>
+        const range = (start, stop) =>  new Array(stop - start)
+                                            .fill(0)
+                                            .map((v, i) => start + i);
+        let oneTo4 = range(1,5);
+        const double =(x)=>x*2;
+        let result = oneTo4.reduce((a,b,)=>{
+            return [...a,double(b)];
+        },[]);
+
+        console.log('Result ',result);
+
+        let oneToTen = range(1,11);
+        const isEven = x => x%2 == 0;
+
+        const filter = (arr,predicate) => arr.reduce((a,b)=>{
+            return predicate(b)?[...a,b]: a;
+        },[]);
+
+        let evenlist = filter(oneToTen,isEven);
+        console.log('EvenList ',evenlist);
+
+        console.log([1,2,3].flatMap(x=>[x,x*2]));
+    </script>
+</html>

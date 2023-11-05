@@ -1,0 +1,21 @@
+<html>
+    <script>
+        let arr = [1,2,3,4,5];
+        const isEven = (x)=> x%2 == 0;
+
+        const not =(fn)=>(...args)=> !fn(...args);
+        const isOdd = not(isEven);
+
+        console.log('OddList ',arr.filter(isOdd));
+
+        let arr2 =  ['1','2','3','4','5'];
+        //map ->value,index,array
+        //parseInt value, radix
+        const unary = fn => (...args) => fn(args[0]);
+
+        console.log('ParseInt ',arr2.map(unary(parseInt)));
+
+        console.log('ParseInt ',parseInt('1',0));
+        console.log('ParseInt ',parseInt('2',1));
+    </script>
+</html>

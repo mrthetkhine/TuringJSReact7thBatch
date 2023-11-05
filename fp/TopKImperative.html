@@ -1,0 +1,42 @@
+<html>
+    <script>
+       let nums = [1,1,1,2,2,2,2,3,3], k = 2;
+       //2,1
+       /*
+        frequency
+       */
+      let frequency ={};
+      /*
+        {
+            '1':3,
+            '2':4,
+            '3':2
+        }
+      */
+      for(let item of nums)
+      {
+        if(!frequency[item])  
+        {
+            frequency[item] = 1;
+        }
+        else
+        {
+            frequency[item] ++;
+        }
+      }  
+      console.log('Frequency ',frequency);
+      let frequencyArr = Object.entries(frequency);
+      console.log('Frequency Arr ',frequencyArr);
+
+      //['1',3],['2',4]
+      frequencyArr.sort((a,b)=>b[1]-a[1]);
+      console.log('FrequencyArr ',frequencyArr);
+
+      let result = [];
+      for(let i=0;i< k;i++)
+      {
+        result.push(frequencyArr[i][0]);
+      }
+      console.log('Topk ',result);
+    </script>
+</html>

@@ -1,0 +1,12 @@
+<html>
+    <script>
+        const demethodize = fn => (...args) => fn.bind(...args)();
+        const map = demethodize(Array.prototype.map);
+        const toUpperCase = demethodize(String.prototype.toUpperCase);
+
+        const name = "FUNCTIONAL";
+        const result2 = map(name, toUpperCase);
+        //[].map.bind(name,toUpperCase)
+        console.log('Result2 ',result2);
+    </script>
+</html>
