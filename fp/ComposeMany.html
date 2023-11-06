@@ -1,0 +1,21 @@
+<html>
+    <script>
+       const toUpper = (str)=>str.toUpperCase();
+       const appendHi = str => str + ' hi';
+        
+       let f =(x)=> x + 10;
+       let g = (x) => x * 2;
+       let inc =(x) => x+1;
+       console.log('f.g(3) ',f(g(3)));
+
+      function compose(...fns)
+      {
+        return function(x)
+        {
+            return fns.reduceRight((input,fn)=>fn(input) ,x);
+        }
+      }
+      let newFun = compose(f,g,inc);
+      console.log('new func ',newFun(3));
+    </script>
+</html>

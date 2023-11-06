@@ -1,0 +1,29 @@
+<html>
+    <script>
+       const toUpper = (str)=>str.toUpperCase();//string->string
+       const appendHi = str => str + ' hi'; //string->string
+       const getLength = (str)=>str.length; //string->number
+
+       let f =(x)=> x + 10;
+       let g = (x) => x * 2;
+       let inc =(x) => x+1;
+       console.log('f.g(3) ',f(g(3)));
+
+      function pipe(...fns)
+      {
+        return function(x)
+        {
+            return fns.reduce((input,fn)=>fn(input) ,x);
+        }
+      }
+      let newFun = pipe(f,g,inc);
+      console.log('new func ',newFun(3));
+
+      let newFun2 = pipe(appendHi,getLength,toUpper);
+      /*
+        toUpper->string
+        getLength(string)->number
+      */
+     console.log('NewFunc2 ',newFun2('hello'));
+    </script>
+</html>

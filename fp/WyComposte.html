@@ -1,0 +1,13 @@
+<html>
+    <script>
+       const toUpper = (str)=>str.toUpperCase();
+       const appendHi = str => str + ' hi';
+
+       function appendHiAndToUpper(str)
+       {
+            return toUpper( appendHi(str)); 
+       }
+       console.log('appendHiAndToUpper ',appendHiAndToUpper('hello'));
+       
+    </script>
+</html>

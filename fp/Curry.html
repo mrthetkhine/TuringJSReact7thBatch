@@ -1,0 +1,30 @@
+<html>
+    <script>
+      function pipe(...fns)
+      {
+        return function(x)
+        {
+            return fns.reduce((input,fn)=>fn(input) ,x);
+        }
+      }
+      
+
+       let f =(x)=> x + 10;
+       let g = (x) => x * 2;
+       let inc =(x) => x+1;
+       let add = (x,y) => x +y;
+
+       const curry = fn =>
+                            fn.length === 0 ? fn() : p => curry(fn.bind(null, p));
+       let curriedAdd = curry(add);
+       console.log('Add (3) ',curriedAdd(3));
+       console.log('Add (3)(4) ',curriedAdd(3)(4));
+       console.log('f.g(3) ',f(g(3)));
+
+      
+      let newFun = pipe(inc,curriedAdd(3));
+      console.log('new func ',newFun(3));
+
+     
+    </script>
+</html>

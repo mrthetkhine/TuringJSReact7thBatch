@@ -1,0 +1,11 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        console.log('R.identity ',R.identity(4));
+        const equals3 = R.equals(3);
+        console.log('Equals3 ',equals3);
+
+        let arr = [3,3,3];
+        console.log('R.all ',R.all(equals3)(arr));
+    </script>
+</html>
