@@ -1,0 +1,45 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        
+
+        
+        let list = [1,2,3,4];
+        const gtZero = R.flip(R.gt)(0);
+        console.log('R.all ',R.all(gtZero)(list));
+
+        //string-> boolean
+        const notEmpty = str=>!R.isEmpty(str);
+        //minLength > 3
+        //string->boolean
+        const minLength = (str)=> str.length >3;
+
+        const errorsMessage = ['NotEmpty ', 'Min Length should be greater than 3']
+
+        console.log('AllPass ',R.allPass([notEmpty,minLength])('hello'));
+        console.log('AllPass ',R.allPass([notEmpty,minLength])('hi'));
+
+        console.log('Ap ',R.ap([R.multiply(2), R.add(3)], [1,2,3]) );
+        console.log('AllPass ',R.ap([notEmpty,minLength],['hi']));
+
+        let errors = R.ap([notEmpty,minLength],['']);
+        //let errorIndex = R.indexOf(false,errors);
+
+        let allErrorIndex = errors.reduce( (arr,value,index)=>{
+            if(value==false)
+            {
+                return [...arr,index];
+            }
+            else
+            {
+                return [...arr];
+            }
+        },[]);
+        let messages = allErrorIndex.reduce((arr,index)=>{
+            return [...arr,errorsMessage[index]]
+        },[]);
+
+        console.log('Index ',messages);
+        console.log('Error message ',);
+    </script>
+</html>

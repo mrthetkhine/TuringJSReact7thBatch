@@ -1,0 +1,46 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        
+        const fact =(n)=> 
+            R.reduce(R.multiply,1,R.range(1,n+1));
+        console.log('Factor ',fact(5));
+        
+        let list = [1,2,3,4];
+        console.log('Head ',R.head(list));
+        console.log('Tail ',R.tail(list));
+        console.log('Tail ',R.tail([]));
+
+        const log = R.tap(console.log);
+        const sum = list =>{
+            /*
+            if(R.isEmpty(R.tail(list)))
+            {
+                return R.head(list);
+            }
+            else
+            {
+                return R.head(list)+ sum(R.tail(list));
+            }
+            */
+           return R.ifElse(
+                R.pipe(R.tail,R.isEmpty),
+                R.head,
+                R.converge(
+                    R.add,
+                    [
+                        R.head,
+                        R.pipe(
+                            R.tail,
+                            sum
+                            )
+                    ]
+                )  
+                )(list);   
+        }
+        //console.log('R.tail(list) ',R.tail(list)==[]);
+        let isEmptyTail =  R.pipe(R.tail,R.isEmpty);
+        console.log('Empty tail ',isEmptyTail([1]));
+        console.log('Sum ',sum(list))
+    </script>
+</html>
