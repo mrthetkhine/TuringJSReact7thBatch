@@ -1,0 +1,41 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        const arr = [
+            {
+                name : 'Aung Min',
+                age  : 14,
+                gender : 'Male'
+            },
+            {
+                name : 'Hla Hla',
+                age  : 30,
+                gender : 'Female'
+            },
+            {
+                name : 'Mya Mya',
+                age  : 20,
+                gender : 'Female'
+            },
+            {
+                name : 'Aung Naing',
+                age  : 24,
+                gender : 'Male'
+            },
+        ]
+        
+        function api()
+        {
+            return arr;
+            //return [];
+        }
+        /*
+        const getFirst = R.prop(0);
+        const getAge = R.prop('age');
+        let getData = R.pipe(getFirst,getAge);
+        console.log(getData(api()));
+        */
+        const lenPath = R.lensPath([0,'age']);
+        console.log('R.over ',R.over(lenPath,R.inc,arr));
+    </script>
+</html>

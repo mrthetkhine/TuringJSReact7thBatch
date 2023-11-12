@@ -1,0 +1,18 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        
+
+        
+        function ifElse(predFun,thenFun,elseFun)
+        {
+            return function(...args)
+            {
+                return predFun(...args)?thenFun(...args):elseFun(...args);
+            }
+        }
+        const isEven = (x)=>x%2 ==0;
+        let result = ifElse(isEven,()=>'Even',()=>'Odd')(4);
+        console.log('Result ',result);
+    </script>
+</html>

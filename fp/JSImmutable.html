@@ -1,0 +1,33 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        const a = 10;
+        //a++;
+        const obj = {
+            name :'TK',
+            age : 39,
+            arr : [100,200],
+            display()
+            {
+                console.log('Display');
+            }
+        };
+        //Object.freeze(obj);
+        obj.age = 100;
+        console.log('Obj ',obj);
+
+        let obj2 = {...obj};//shallow clone
+        obj2.arr.push(300);
+
+        console.log('Obj ',obj);
+        console.log('Obj2 ',obj2);
+        //deep clone
+
+        let str = JSON.stringify(obj);
+        let obj3 = JSON.parse(str);
+
+        obj3.arr.push(400);
+        console.log('Obj ',obj);
+        console.log('Obj3 ',obj3);
+    </script>
+</html>

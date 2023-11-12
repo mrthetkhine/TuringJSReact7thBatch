@@ -1,0 +1,33 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        const arr = [
+            {
+                name : 'Aung Min',
+                age  : 14,
+                gender : 'Male'
+            },
+            {
+                name : 'Hla Hla',
+                age  : 30,
+                gender : 'Female'
+            },
+            {
+                name : 'Mya Mya',
+                age  : 20,
+                gender : 'Female'
+            },
+            {
+                name : 'Aung Naing',
+                age  : 24,
+                gender : 'Male'
+            },
+        ];
+       
+        const firstLen = R.lensProp(0);
+        const nameLen = R.lensProp('name');
+
+        const composeLens = R.compose(firstLen,nameLen);
+        console.log('R.view ',R.view(composeLens,arr));
+    </script>
+</html>

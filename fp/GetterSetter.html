@@ -1,0 +1,63 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        const a = 10;
+        //a++;
+        const obj = {
+            name :'TK',
+            age : 39,
+            arr : [100,200],
+            /*
+            address : {
+                city : 'ygn'
+            },
+            */
+            display()
+            {
+                console.log('Display');
+            }
+        };
+        const another = {
+            age : 100
+        }
+        console.log('Obj ',obj.age);
+        //field, object
+        const getField = attr=> obj=> obj[attr];
+        const getAge = getField('age');
+        console.log('getAge ',getAge(obj));
+        console.log('getAge ',getAge(another));
+
+        console.log('City ',obj?.address?.city);
+
+        //['address','city']
+        const getByPath = (arr,obj)=>{
+            if (arr[0] in obj) {
+                return arr.length > 1
+                    ? getByPath(arr.slice(1), obj[arr[0]])
+                    : { ...obj,
+                        [arr[0]]:obj[arr[0]]
+                      };
+            } else 
+            {
+                return undefined;
+            }
+        }
+        console.log('Adress ', getByPath(['address','city'],obj));
+        //obj.address.city = 'Ygn';
+        //['address','city']
+        const setByPath = (arr, value, obj) => {
+                if (!(arr[0] in obj)) {
+                    obj[arr[0]] =
+                        arr.length === 1 ? null : Number.isInteger(arr[1]) ? [] : {};
+                }
+                if (arr.length > 1) {
+                    return setByPath(arr.slice(1), value, obj[arr[0]]);
+                } else {
+                    obj[arr[0]] = value;
+                    return obj;
+                }
+        };
+        setByPath(['address','city'],'ygn',obj);
+        console.log('Obj ',obj);
+    </script>
+</html>

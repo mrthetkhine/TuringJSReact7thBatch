@@ -1,0 +1,23 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        function pair(a,b)
+        {
+            return function(accessor)
+            {
+                return accessor(a,b);
+            }
+        }
+        function first(a,b)
+        {
+            return a;
+        }
+        function second(a,b)
+        {
+            return b;
+        }
+        let p = pair(10,'Hello');
+        console.log('First ',p(first));
+        console.log('Second ',p(second));
+    </script>
+</html>

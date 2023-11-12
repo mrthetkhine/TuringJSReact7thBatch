@@ -1,0 +1,31 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        const a = 10;
+        //a++;
+        const obj = {
+            name :'TK',
+            age : 39,
+            arr : [100,200],
+            /*
+            address : {
+                city : 'ygn'
+            },
+            */
+            
+            display()
+            {
+                console.log('Display');
+            }
+        };
+        const getAge = R.prop('age');
+        console.log('GetAge ',getAge(obj));
+
+        let obj2 = R.assoc('age',100,obj);
+        console.log('Obj ',obj);
+        console.log('Obj2 ',obj2);
+
+        let obj3 = R.assocPath(['address','city'],'MDY',obj);
+        console.log('Path ',R.path(['address','city'],obj3));
+    </script>
+</html>
