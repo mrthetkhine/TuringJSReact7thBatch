@@ -1,0 +1,72 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        const Left =(value)=>({
+                value,
+                map(fn)
+                {
+                    return Left.of(value);
+                },
+                matchWith(context)
+                {
+                    return context.left(value);
+                },
+                valueOf()
+                {
+                    return value;
+                }
+            });
+        Left.of = Left;
+        const Right =(value)=>({
+            value,
+            map(fn)
+            {
+                return Right.of(fn(value));
+            },
+            matchWith(context)
+            {
+                //console.log('Sucess ',context);
+                return context.right(value);
+            },
+            valueOf()
+            {
+                return value;
+            }
+        });
+        Right.of = Right;
+    
+        Right.of(10)
+            .map(x=>x+1)
+            .matchWith({
+                right:(data)=>console.log('Sucess data ',data),
+                left:(data)=>console.log('Failed data ',data),
+            })
+        function div(a,b)
+        {
+            if(isNaN(a) || isNaN(b))
+            {
+                return Left.of('Invalid parameter a or b is null');
+            }
+            else
+            {
+                return Right.of(a/b);
+            }
+        }
+        div(10,NaN)
+            .map(x=>x+1)
+            .matchWith({
+                left:(data)=>console.log('error ',data),
+                right:(data)=>console.log('success ',data)
+            });
+        div(10,4)
+            .matchWith({
+                left:(data)=>Right.of(0),
+                right:(data)=>Right.of(data)
+            })
+            .map(x=>x+1)
+            .matchWith({
+                left:(data)=>console.log('error ',data),
+                right:(data)=>console.log('success ',data)
+            })
+    </script>
+</html>

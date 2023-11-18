@@ -1,0 +1,115 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        /*
+        if(str !==null or str!==undefined)
+        */
+        const toUpper = (str)=>str.toUpperCase();
+        const appendHi = (str)=> str + 'hi';
+        
+        let Nothing =(value)=>({
+            map(fn){
+                return this;
+            },
+            isNothing()
+            {
+                return true;
+            },
+            orElse(defaultValue)
+            {
+                return Just(defaultValue);
+            },
+            valueOf()
+            {
+                return value;
+            }
+        });
+        Nothing.of = Nothing;
+        let Just =(value)=>({
+            map(fn){
+                return MayBe.of(fn(value));
+            },
+            isNothing()
+            {
+                return false;
+            },
+            orElse(defaultValue)
+            {
+                return this;
+            },
+            valueOf()
+            {
+                return value;
+            }
+        });
+        Just.of = Just;
+        let MayBe =(value)=> (value==isNaN(value)|| value===undefined || value==null)
+                ?Nothing.of(value)
+                :Just.of(value);
+        MayBe.of = MayBe;
+        /*
+        function div(a,b)
+        {
+            if(isNaN(a) || isNaN(b))
+            {
+                throw new Error('Invalid parameter a or b is NaN');
+            }
+            else
+            {
+                return a/b;
+            }
+        }
+        try
+        {
+            let result = div(10,NaN);
+            console.log('result ',result);
+        }
+        catch(error)
+        {
+            console.log('Catch ',error);
+        }
+        */
+        function div(a,b)
+        {
+            if(isNaN(a) || isNaN(b))
+            {
+                return Nothing.of('Invalid parameter a or b is null');
+            }
+            else
+            {
+                return Just.of(a/b);
+            }
+        }
+        div(10,NaN)
+            .map(x=>x+2)
+            .map(console.log);
+        let employees =[
+            {
+                name : 'Aung Hla',
+                supervisor : {
+                    name : 'U Soe'
+                }
+            },
+            {
+                name : 'Aung Hla',
+                
+            }
+        ];
+
+        let firstEmployee = employees[0];
+        if(firstEmployee)
+        {
+            if(firstEmployee.supervisor)
+            {
+                console.log('Supervisor name ',firstEmployee.supervisor.name);
+            }
+        }
+        
+        MayBe.of(employees[1])
+            .map(emp=>emp.supervisor)
+            .map(supervisor=>supervisor.name)
+            .map(console.log);
+        
+       console.log(MayBe.of(employees[1].supervisor).valueOf())
+    </script>
+</html>

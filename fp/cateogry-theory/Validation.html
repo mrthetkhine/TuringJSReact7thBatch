@@ -1,0 +1,68 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        let obj ={
+            username: 'TK',
+            email :'me@gmail.com'
+        };
+        const notEmpty = (str)=> str.length >0;
+        const minLength = length=> str=> str.length>=length;
+        const maxLength = length=> str=> str.length<=length;
+
+        const validEmail = str => str.includes('@');
+        /*
+        console.log('Min Length ',minLength(3)('hi'));
+        console.log('Min Length ',minLength(3)('hello'));
+        
+        console.log('Max Length ',maxLength(3)('hello'));
+        console.log('Max Length ',maxLength(3)('hel'));
+
+        console.log('validEmail ',validEmail('hello'));
+        console.log('validEmail ',validEmail('me@'));
+        */
+       const userNameNotEmpty = (obj)=> notEmpty(obj.username);
+       const userNameMinLength = (obj)=> minLength(3)(obj.username);
+       const userNameMaxLength = (obj)=> maxLength(5)(obj.username);
+       const userEmailValid =(obj) =>validEmail(obj.email);
+
+       const And ={
+            concat:(a,b)=> a && b,
+            empty:()=>true 
+       }
+       const Or ={
+            concat:(a,b)=> a || b,
+            empty:()=>false 
+       }
+       //combinator(And)
+       function combinator(monoid)
+       {
+            return function (...validators)
+            {
+                return function(input)
+                {
+                    let accumulator = monoid.empty();
+                    for(const validator of validators)
+                    {
+                        accumulator = monoid.concat(validator(input),accumulator);
+                    }
+                    return accumulator;
+                }
+            }
+       }
+       let andCombinator = combinator(And);
+       let orCombinator = combinator(Or);
+       let userNameNotEmptyAndValidEmail = andCombinator(userNameNotEmpty,
+            orCombinator(userNameMinLength,userNameMaxLength)
+        );
+       
+       console.log('userNameNotEmptyAndValidEmail ',userNameNotEmptyAndValidEmail({
+            username:'TK',
+            email:'me'
+       }));
+       console.log('userNameNotEmptyAndValidEmail ',userNameNotEmptyAndValidEmail({
+            username:'TK',
+            email:'me@gmail.com'
+       }));
+       
+    </script>
+</html>
