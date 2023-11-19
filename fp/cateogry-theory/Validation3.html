@@ -1,0 +1,210 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        const Left =(value)=>({
+                value,
+                map(fn)
+                {
+                    return Left.of(value);
+                },
+                isLeft()
+                {
+                    return true;
+                },
+                matchWith(context)
+                {
+                    return context.left(value);
+                },
+                valueOf()
+                {
+                    return value;
+                },
+                and(other)
+                {
+                    return other.isLeft()
+                            ?Left.of([...value,...other.valueOf()])
+                            :this;
+                },
+                or(other)
+                {
+                    return other.isLeft()
+                            ?Left.of([...value,...other.valueOf()])
+                            :other;
+                }
+            });
+        Left.of = Left;
+        const Right =(value)=>({
+            value,
+            map(fn)
+            {
+                return Right.of(fn(value));
+            },
+            matchWith(context)
+            {
+                //console.log('Sucess ',context);
+                return context.right(value);
+            },
+            isLeft()
+            {
+                return false;
+            },
+            valueOf()
+            {
+                return value;
+            },
+            and(other)
+            {
+                return other.isLeft()
+                        ?other
+                        :this;
+            },
+            or(other)
+            {
+                return this;
+            }
+        });
+        Right.of = Right;
+        
+        const notEmpty = (str)=> str.length >0;
+        const minLength = length=> str=> str.length>=length;
+        const maxLength = length=> str=> str.length<=length;
+
+        const validEmail = str => str.includes('@');
+        /*
+        console.log('Min Length ',minLength(3)('hi'));
+        console.log('Min Length ',minLength(3)('hello'));
+        
+        console.log('Max Length ',maxLength(3)('hello'));
+        console.log('Max Length ',maxLength(3)('hel'));
+
+        console.log('validEmail ',validEmail('hello'));
+        console.log('validEmail ',validEmail('me@'));
+        */
+       const userNameNotEmpty = (obj)=> notEmpty(obj.username);
+       const userNameMinLength = (obj)=> minLength(3)(obj.username);
+       const userNameMaxLength = (obj)=> maxLength(5)(obj.username);
+       const userEmailNotEmpty =(obj) =>notEmpty(obj.email);
+       const userEmailValid =(obj) =>validEmail(obj.email);
+
+       function validatorHof(validator,errorMessage)
+       {
+            return function(input)
+            {
+                if(validator(input))
+                {
+                    return Right.of(input);
+                }
+                else
+                {
+                    return Left.of([errorMessage]);
+                }
+            } 
+       }
+       const userNameNotEmptyV2 = validatorHof(userNameNotEmpty,'Username should not be empty');
+       const userNameMinLengthV2 = validatorHof(userNameMinLength,'Username min length should be 3');
+       const userNameMaxLengthV2 = validatorHof(userNameMaxLength,'Username max length should be 5');
+       const userEmailNotEmptyV2 = validatorHof(userEmailNotEmpty,'Email should not be blank');
+       const userEmailValidV2 = validatorHof(userEmailValid,'Email should conatain @'); 
+       
+       function andCombinator(...validators)
+       {
+            return function(input)
+            {
+                let accumulator = Right.of(input);
+                for(const validator of validators)
+                {
+                    accumulator = accumulator.and(validator(input));
+                }
+                return accumulator;
+            }
+       }
+       function orCombinator(...validators)
+       {
+            return function(input)
+            {
+                let accumulator = Left.of([]);
+                for(const validator of validators)
+                {
+                    accumulator = accumulator.or(validator(input));
+                }
+                return accumulator;
+            }
+       }
+       
+       let isValidUserName = andCombinator(userNameNotEmptyV2,userNameMinLengthV2,userNameMaxLengthV2);
+       let isValidEmail = andCombinator(userEmailNotEmptyV2,userEmailValidV2);
+       /*
+       isValidUserName({
+            username:'eage'
+       }).matchWith({
+        left:(errors)=>console.log('Errors ',errors),
+        right:(data)=>console.log('Validation success ',data)
+       })
+       isValidEmail({
+        email:'hello@'
+       }).matchWith({
+        left:(errors)=>console.log('Errors ',errors),
+        right:(data)=>console.log('Validation success ',data)
+       })
+       */
+      let userNameOrEmailNotEmpty = orCombinator(userEmailNotEmptyV2,userNameNotEmptyV2); 
+      userNameOrEmailNotEmpty({
+        username:'he',
+        email:''
+      }).matchWith({
+                left:(errors)=>console.log('Errors ',errors),
+                right:(data)=>console.log('Data ',data),
+        }); 
+     /*
+        Left.of(['Error 1'])
+            .and(Left.of(['error 2']))
+            .matchWith({
+                left:(errors)=>console.log('Errors ',errors),
+                right:(data)=>console.log('Data ',data),
+            });  
+        Left.of(['Error 1'])
+            .and(Right.of({name:'TK'}))
+            .matchWith({
+                left:(errors)=>console.log('Errors ',errors),
+                right:(data)=>console.log('Data ',data),
+            });
+    Right.of({name :'TK'})
+        .and(Left.of(['error 1']))
+        .matchWith({
+            left:(errors)=>console.log('Errors ',errors),
+            right:(data)=>console.log('Data ',data),
+        });  
+    Right.of({name :'TK'})
+        .and(Right.of({name:'Tk'}))
+        .matchWith({
+            left:(errors)=>console.log('Errors ',errors),
+            right:(data)=>console.log('Data ',data),
+        }); 
+    Left.of(['Error 1'])
+        .or(Left.of(['error 2']))
+        .matchWith({
+            left:(errors)=>console.log('Errors ',errors),
+            right:(data)=>console.log('Data ',data),
+        });  
+    Left.of(['Error 1'])
+        .or(Right.of({name:'tk'}))
+        .matchWith({
+            left:(errors)=>console.log('Errors ',errors),
+            right:(data)=>console.log('Data ',data),
+        });  
+    Right.of({name:'tk'})
+        .or(Right.of({name:'tk'}))
+        .matchWith({
+            left:(errors)=>console.log('Errors ',errors),
+            right:(data)=>console.log('Data ',data),
+        });
+    Right.of({name:'tk'})
+        .or(Left.of(['Error 1']))
+        .matchWith({
+            left:(errors)=>console.log('Errors ',errors),
+            right:(data)=>console.log('Data ',data),
+        });
+    */        
+    
+    </script>
+</html>

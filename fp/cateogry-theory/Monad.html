@@ -1,0 +1,86 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        /*
+        let counter = 0;
+        counter ++;
+        */
+        const inc = x => x+1;
+        const double = x => x * 2;
+        let Container =(value)=>({
+            map(fn){
+                return Container(fn(value));
+            },
+            valueOf()
+            {
+                return value;
+            },
+            unwrap()
+            {
+                return value;
+            },
+            chain(fn) {
+                return this.map(fn).unwrap(); 
+            }
+        });
+        Container.of = Container;
+        let Nothing =(value)=>({
+            map(fn){
+                return this;
+            },
+            isNothing()
+            {
+                return true;
+            },
+            orElse(defaultValue)
+            {
+                return Just(defaultValue);
+            },
+            valueOf()
+            {
+                return value;
+            }
+        });
+        Nothing.of = Nothing;
+        let Just =(value)=>({
+            map(fn){
+                return MayBe.of(fn(value));
+            },
+            isNothing()
+            {
+                return false;
+            },
+            orElse(defaultValue)
+            {
+                return this;
+            },
+            valueOf()
+            {
+                return value;
+            },
+            chain(fn) {
+                return this.map(fn).unwrap(); 
+            }
+        });
+        Just.of = Just;
+        let MayBe =(value)=> (value==isNaN(value)|| value===undefined || value==null)
+                ?Nothing.of(value)
+                :Just.of(value);
+        MayBe.of = MayBe;
+        
+        let employess =[
+            {
+                name :"Emp1"
+            },
+        ];
+        function getEmp(id)
+        {
+            return MayBe.of(employess[id]);
+        }
+        Container.of(0)
+                 .chain(getEmp)//Container(MayBe.of(undefined))
+                 .map(emp=>emp.name)
+                 .map(console.log);   
+
+    </script>
+</html>

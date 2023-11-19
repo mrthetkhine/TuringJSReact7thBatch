@@ -1,0 +1,10 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.28.0/ramda.js"></script>
+    <script>
+        Promise.reject(10) 
+                .then(x=>x+1)
+                .then(data=>console.log('Sucesss',data),
+                    error=>console.log('Error ',error)) ;
+
+    </script>
+</html>

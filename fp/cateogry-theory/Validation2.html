@@ -77,7 +77,7 @@
                 username:''
             })
             .matchWith({
-                left :(data)=> console.error('Invalid user ',data),
+                left :(data)=> console.log('Invalid user ',data),
                 right : (data)=>console.log('Validation ok')
             })
 
