@@ -5,5 +5,9 @@
        let arr = [1,2,3];
        let arr2 = arr.flatMap(x=>[x, x*x]);//value=value,value->[value,value*value]
        console.log('Arr2 ',arr2); 
+
+       Promise.resolve(10)
+              .then(x=> Promise.resolve(x*2))  
+              .then(console.log);
     </script>
 </html>

@@ -1,0 +1,49 @@
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/ramda@0.27.1/dist/ramda.min.js"></script>
+    <script>
+     //Ref https://blog.klipse.tech/javascript/2016/08/31/monads-javascript.html
+       const compose = (f,g)=>x=> f(g(x));
+
+       /*
+       const inc = (x)=> {
+            console.log("Inc x ",x);
+            return x+1;
+       };
+       const double = (x)=>{
+            console.log("double x ",x);
+            return  x * 2;
+       }
+       */
+       const inc = (x)=> [x+1,`inc called with ${x}`];
+       const double = (x)=> [x*2,`double called with ${x}`];
+
+       let [result,logStr] = inc(10);
+       console.log('Result ',result,logStr);
+
+       let newFunc = compose(double,inc);
+       console.log('NewFunc ',newFunc(10));
+
+       
+       let composeDebuggable = (f,g)=> x=>{
+           let[result,logStr]= g(x);
+           let [result2,logStr2] = f(result);
+
+           return [result2, logStr +', '+ logStr2];
+       }
+       newFunc = composeDebuggable(double,inc);
+       console.log('composeDebuggable ',newFunc(10));
+     
+       const bind = (f) => function(tuple) {
+            const [result, log1] = tuple,
+                    [result2, log2] = f(result);
+            return [result2, log1 +', '+ log2];
+      };
+      let newFunctionWithTuple = compose(bind(inc),bind(double));
+      let unit = (x)=> [x,''];
+      //console.log(' newFunctionWithTuple ',newFunctionWithTuple(3));
+      let finalFunc = compose(newFunctionWithTuple,unit);
+      //console.log("newFunctionWithTuple ",newFunctionWithTuple(unit(10)));
+      console.log('FinalFunc ',finalFunc(10));
+      
+    </script>
+</html>
