@@ -1,0 +1,30 @@
+<html>
+    <script>
+       
+        class Shape
+        {
+            draw()
+            {
+                console.log('Shape draw');
+            }
+        }
+        class Circle extends Shape
+        {
+            draw()
+            {
+                console.log('Circle draw');
+            }
+        }
+        class Rectangle extends Shape
+        {
+            draw()
+            {
+                console.log('Rectangle draw');
+            }
+        }
+        let s = new Circle();
+        s.draw();
+        s = new Rectangle();
+        s.draw();
+    </script>
+</html>

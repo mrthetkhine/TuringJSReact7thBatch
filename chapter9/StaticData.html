@@ -1,0 +1,25 @@
+<html>
+    <script>
+       
+        class Counter
+        {
+            static globalId = 0;
+            constructor()
+            {
+                this.id = Counter.globalId++;
+            }
+        }
+        Counter.prototype.someMethod = function()
+        {
+            console.log('Some method');
+        }
+        let c = new Counter();
+        let c2 = new Counter();
+
+        c.someMethod();
+
+        console.log('C ',c.id);
+        console.log('C2 ',c2.id);
+        console.log('Gloabl Id ',Counter.globalId);
+    </script>
+</html>

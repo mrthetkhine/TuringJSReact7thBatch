@@ -1,0 +1,28 @@
+<html>
+    
+    <script>
+        let set = new Set([1,2,2,12,2]);
+        console.log('set ',set);
+        console.log('size ',set.size);
+
+        set.add(10);
+        set.add(2);
+        console.log('size ',set.size);
+
+        set.delete(2);
+        console.log('Set ',set);
+
+        //set.clear();
+        console.log('has(1) ',set.has(1));
+        console.log('has("1") ',set.has("1"));
+        console.log('has(2) ',set.has(2));
+        console.log('Set ',set.size);
+
+        for(const item of set)
+        {
+            console.log('Item ',item);
+        }
+        let arr = [...set];
+        console.log('Arr ',arr);
+    </script>
+</html>

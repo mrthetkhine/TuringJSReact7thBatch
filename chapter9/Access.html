@@ -1,0 +1,20 @@
+<html>
+    <script>
+       
+        class Data
+        {
+            #privateData = 10;
+            data = 20;
+            static classData = 100;
+            show()
+            {
+                console.log('Private show ',this.#privateData);
+            }
+        }
+        
+        let d = new Data();
+        d.show();
+        //console.log('private ',d.#privateData);
+        console.log('Public ',d.data);
+    </script>
+</html>

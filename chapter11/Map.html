@@ -1,0 +1,29 @@
+<html>
+    
+    <script>
+        let map = new Map([
+            ['id1','Tk'],
+            ['id2','Aung Aung'],
+            ['id1','Aung Lwin']
+        ]);
+        console.log('Map ',map);
+        console.log('getid1 ',map.get('id1'));
+
+        map.set('id3',{
+            name : "Hla Hla"
+        });
+        console.log('Map ',map);
+        console.log('has ',map.has('id1'));
+
+        map.delete('id1');
+        console.log('Map ',map);
+
+        for(const [key,value] of map)
+        {
+            console.log('Key ',key, ' value ',value);
+        }
+        console.log('Keys ',map.keys());
+        console.log('Value ',map.values());
+        console.log('Entries ',map.entries());
+    </script>
+</html>

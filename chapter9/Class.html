@@ -1,0 +1,33 @@
+<html>
+    <script>
+        let obj = {
+            name : 'TK',
+            age : 39,
+            display()
+            {
+                console.log('Name ',this.name, ' Age ',this.age);
+            }
+        }
+        obj.display();
+
+        class Human
+        {
+            constructor(name,age)
+            {
+                console.log('Constructor');
+                this.name = name;
+                this.age = age;
+            }
+            display()
+            {
+                console.log('Name ',this.name, ' Age ',this.age);
+            }
+        }
+        let h1 = new Human('TK',39);
+        let h2 = new Human('Aung Aung',35);
+        console.log('H1 constructor ',h1.constructor  === Human);
+        console.log('H2 ',h2);
+        h1.display();
+        h2.display();
+    </script>
+</html>

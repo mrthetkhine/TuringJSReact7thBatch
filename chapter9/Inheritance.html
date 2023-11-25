@@ -1,0 +1,45 @@
+<html>
+    <script>
+       
+        class Human
+        {
+            constructor(name,age)
+            {
+                console.log('Constructor');
+                this.name = name;
+                this.age = age;
+            }
+            display()
+            {
+                console.log('Name ',this.name, ' Age ',this.age);
+            }
+        }
+        class Teacher extends Human
+        {
+            constructor(name,age,school)
+            {
+                //console.log('Teacher Constuctor');
+                super(name,age);
+                this.school = school;
+            }
+            display()
+            {
+                super.display();
+                console.log(' School ',this.school);
+            }
+            static staticMethod()
+            {
+                console.log('Static method ',this.name, ' Age ',this.age);
+            }
+        }
+        let t1 = new Teacher('TK',39,'Turing');
+        console.log('T1 ',t1);
+        //t1.showSchool();
+        t1.display();
+        Teacher.staticMethod();
+        console.log('t1 instanceof Teacher ',t1 instanceof Teacher);
+        console.log('t1 instanceof Human ',t1 instanceof Human);
+        console.log('t1 instanceof Object ',t1 instanceof Object);
+        console.log('t1 instanceof Date ',t1 instanceof Date);
+    </script>
+</html>
