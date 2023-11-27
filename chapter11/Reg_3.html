@@ -1,0 +1,48 @@
+<html>
+    <body>
+       
+    </body>
+    <script>
+        //username@domainname
+        let emailAddress = 'me@gmail.com';
+        let phoneNo = "19393922";
+
+        let reg ;
+
+        reg = /[^xyz]+/;
+        console.log(reg,'.test("moon") ',reg.test("moon"));
+        console.log(reg,'.test("x") ',reg.test("x"));
+        console.log(reg,'.test("yz") ',reg.test("yz"));
+        console.log(reg,'.test("1") ',reg.test("1"));
+
+        reg = /p.$/;
+        console.log(reg,'.test("loop") ',reg.test("loop"));
+        console.log(reg,'.test("looph") ',reg.test("looph"));
+        console.log(reg,'.test("loop\n") ',reg.test("loop\n"));
+        
+        reg = /\d{9,11}/;
+        console.log(reg,'.test("123456789") ',reg.test("123456789"));
+        console.log(reg,'.test("12345678911") ',reg.test("12345678911"));
+        console.log(reg,'.test("12345678") ',reg.test("12345678"));
+
+        reg = /\D{5}/;
+        console.log(reg,'.test("hello") ',reg.test("hello"));
+        console.log(reg,'.test("12345678911") ',reg.test("12345678911"));
+        console.log(reg,'.test("how#$122") ',reg.test("how#$122"));
+
+        reg = /\W/;
+        console.log(reg,'.test("hello") ',reg.test("hello"));
+        console.log(reg,'.test("12345678911") ',reg.test("12345678911"));
+        console.log(reg,'.test("how#$122") ',reg.test("how#$122"));
+
+        reg = /^hello\s.+/;
+        console.log(reg,'.test("hello morning") ',reg.test("hello morning"));
+        console.log(reg,'.test("hellomorning") ',reg.test("hellomorning"));
+        console.log(reg,'.test("how#$122") ',reg.test("how#$122"));
+
+        reg = /^hello\S.+/;
+        console.log(reg,'.test("hello morning") ',reg.test("hello morning"));
+        console.log(reg,'.test("hellomorning") ',reg.test("hellomorning"));
+        console.log(reg,'.test("how#$122") ',reg.test("how#$122"));
+    </script>
+</html>

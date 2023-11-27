@@ -1,0 +1,33 @@
+<html>
+    <body>
+        <button type="button" id="btnAllocate">Allocate</button>
+        <button type="button" id="btnDeallocate">DeAllocate</button>
+    </body>
+    <script>
+        
+        //arr stack
+        //heap
+        //let arr;
+        let another;
+        let map = new Map();
+        
+        function hello()
+        {
+            console.log('Weakmap  Allocate');
+            let arr = [];
+            for(let i=0;i<50;i++)
+            {
+                arr.push( new Int8Array(10000));
+            }
+            //arr = null;
+            //another = arr;
+            map.set(arr,'something');
+        }
+        document.getElementById('btnAllocate').addEventListener('click',()=>{
+            hello();
+        });
+        document.getElementById('btnDeallocate').addEventListener('click',()=>{
+            //another=null;
+        });
+    </script>
+</html>

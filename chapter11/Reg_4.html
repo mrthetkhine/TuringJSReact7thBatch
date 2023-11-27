@@ -1,0 +1,39 @@
+<html>
+    <body>
+       
+    </body>
+    <script>
+        //username@domainname
+        let emailAddress = 'me@gmail.com';
+        let phoneNo = "19393922";
+
+        let reg ;
+
+        reg = /cat|dog/;
+        console.log(reg,'.test("cat") ',reg.test("cat"));
+        console.log(reg,'.test("cate") ',reg.test("cate"));
+        console.log(reg,'.test("dog") ',reg.test("dog"));
+        console.log(reg,'.test("nice") ',reg.test("nice"));
+
+        console.log('cate.match ','cate'.match(reg));
+
+        reg = /\d+/g;
+        console.log('hello1234  and 456','hello123 and 456'.match(reg));
+        console.log('hello1234  and 456',[...'hello123 and 456'.matchAll(reg)]);
+
+        reg = /(\w+)@(\w+)\.(com|org|net)/;
+        console.log(reg,'.test("email") ',reg.test("email"));
+        console.log(reg,'.test("me@gmail.com") ',reg.test("me@gmail.com"));
+
+        console.log('Match ',reg.exec(emailAddress));
+        let result = emailAddress.match(reg);
+        console.log('Group ',result);
+        console.log('username ',result[1]);
+        console.log('domainname ',result[2]);
+        /*
+        for (const match of emailAddress.matchAll(reg)) {
+            console.log(`match ${match}`,match.groups);
+        }
+        */
+    </script>
+</html>

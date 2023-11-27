@@ -1,0 +1,43 @@
+<html>
+    <body>
+       
+    </body>
+    <script>
+        //username@domainname
+        let emailAddress = 'me@gmail.com';
+        let phoneNo = "19393922";
+
+        let reg = /^Java/;
+
+        console.log('/^Java/.test("Java") ',reg.test("Java"));
+        console.log('/^Java/.test("JavaScript") ',reg.test("JavaScript"));
+        console.log('/^Java/.test("Python") ',reg.test("Python"));
+
+        reg = /Script$/;
+        console.log('/Script$/.test("Java") ',reg.test("Java"));
+        console.log('/Script$/.test("JavaScript") ',reg.test("JavaScript"));
+        console.log('/Script$/.test("ShellScript") ',reg.test("ShellScript"));
+
+        reg = /\bm/;
+        console.log('/\bm/.test("moon") ',reg.test("moon"));
+        console.log('/\bm/.test("honeymoon") ',reg.test("honeymoon"));
+        console.log('/\bm/.test("honey moon") ',reg.test("honey moon"));
+
+        reg = /\Bm/;
+        console.log('/\Bm/.test("moon") ',reg.test("moon"));
+        console.log('/\Bm/.test("honeymoon") ',reg.test("honeymoon"));
+        console.log('/\Bm/.test("honey moon") ',reg.test("honey moon"));
+
+        //reg=/abc/
+        reg = /[a-c]/;
+        console.log('/abc/.test("moon") ',reg.test("moon"));
+        console.log('/abc/.test("abc") ',reg.test("abc"));
+        console.log('/abc/.test("abb") ',reg.test("abb"));
+
+        reg = /^[0-9]*$/;
+        console.log('/^[0-9]$/.test("moon") ',reg.test("moon"));
+        console.log('/^[0-9]$/.test("123") ',reg.test("123"));
+        console.log('/^[0-9]$/.test("02823") ',reg.test("02823"));
+        console.log('/^[0-9]$/.test("1") ',reg.test("1"));
+    </script>
+</html>
