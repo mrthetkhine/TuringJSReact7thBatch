@@ -1,0 +1,25 @@
+<html>
+ 
+    <script>
+       let url = new URL("https://www.google.com:8000/search?q=term#fragment");
+       console.log('Href ',url.href);
+       console.log('Origin ',url.origin);
+       console.log('Protocol ',url.protocol);
+       console.log('Host ',url.host);
+       console.log('Hostname ',url.hostname);
+       console.log('Port ',url.port);
+       console.log('Path ',url.pathname);
+       console.log('Search ',url.search);
+       console.log('Hash ',url.hash);
+
+       url.searchParams.append('q','term');
+       console.log('Search ',url.search);
+       console.log('Search get',url.searchParams.get('q'));
+       console.log('Search has',url.searchParams.has('q'));
+
+       let str = encodeURI('http://www.google.com/something wrong');
+       console.log('endcode ',str);
+       let url2 = decodeURI(str);
+       console.log('Url2 ',url2);
+    </script>
+</html>

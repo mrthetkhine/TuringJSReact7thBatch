@@ -1,0 +1,38 @@
+<html>
+ 
+    <script>
+       let obj = {
+            name :'TK',
+            secret:'something',
+            age : 39,
+            array : [10,20,30],
+            display()
+            {
+                console.log('Not in JSON');
+            },
+            toJSON()
+            {
+                console.log('toJSON called');
+                return{
+                    username: this.name,
+                    age: this.age,
+                    _someKey : 100
+                }
+            }
+       };
+       let str = JSON.stringify(obj);
+       console.log('Str ',str);
+       let obj2 = JSON.parse(str);
+       console.log('Obj 2 ',obj2);
+
+       obj2 = JSON.parse(str,(key,value)=>{
+        console.log('Key ',key, ' Value ',value);
+            if(key.startsWith('_'))
+            {
+                return value+200
+            }
+            return value;
+       });
+       console.log('Obj 2 ',obj2);
+    </script>
+</html>

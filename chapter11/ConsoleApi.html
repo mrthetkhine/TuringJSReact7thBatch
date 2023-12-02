@@ -1,0 +1,67 @@
+<html>
+ 
+    <script>
+       console.log('log');
+       console.debug('Debug');
+       console.info('Info');
+       console.warn('Warn');
+       console.warn('error');
+
+       console.assert(1===2,'Asssert code');
+
+       function display(msg1,msg2)
+       {
+        console.assert(arguments.length===2,'Invalid number of arguments');
+
+       }
+       display('one','two');
+
+       let arr =[
+        1,2,3,4
+       ]
+       console.table(arr);
+
+       let obj = {
+        name :'TK',
+        age :39
+       };
+       console.table(obj);
+
+       function one()
+       {
+        two();
+       }
+       function two()
+       {
+        three();
+       }
+       function three()
+       {
+        console.trace('Three');
+       }
+       one();
+
+       console.time('Timer1');
+
+       for(let i=0;i<10;i++)
+       {
+        console.count('Hello');
+       }
+       
+       console.log('Another');
+       console.count('Hello');
+       console.countReset('Hello');
+
+       console.group('Level1');
+       console.log('Inside level 1');
+       console.group('Level1.1');
+       console.log('Inside level 1.1');
+       console.groupEnd();
+       console.groupEnd();
+
+       console.timeLog('Timer1','Elapsed since');
+       console.timeEnd('Timer1');
+
+       console.log('%s %f world ','hello',3.145);
+    </script>
+</html>

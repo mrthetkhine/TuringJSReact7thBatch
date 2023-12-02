@@ -1,0 +1,14 @@
+<html>
+ 
+    <script>
+       let euros = Intl.NumberFormat("es", {style: "currency", currency: "EUR"});
+       console.log('Euros ',euros.format(10));
+
+       let pounds = Intl.NumberFormat("en", {style: "currency", currency: "GBP"});
+       console.log('Pounds ',pounds.format(10));
+
+       let date = new Date();
+       console.log(Intl.DateTimeFormat("en-US").format(date));
+       console.log(Intl.DateTimeFormat("fr-FR").format(date));
+    </script>
+</html>

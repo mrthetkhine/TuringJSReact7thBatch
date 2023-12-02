@@ -1,0 +1,31 @@
+<html>
+    <body>
+       
+    </body>
+    <script>
+        let date = new Date();
+        console.log('Date ',date);
+
+        //date = new Date(2024,1,1);
+        console.log('Date ',date);
+
+        let miliseconds = date.getTime();
+        console.log('Milisecond ',miliseconds);
+
+        date = new Date(miliseconds);
+        console.log('Date ',date);
+
+        console.log('Year ',date.getFullYear());
+        console.log('Month ',date.getMonth());
+        console.log('Date ',date.getDate());
+        console.log('Day ',date.getDay());
+        console.log('Hour ',date.getHours());
+        console.log('Minutes ',date.getMinutes());
+
+        let start = Date.now();
+        console.log('Hello');
+        let end = Date.now();
+        let elapsed = end- start;
+        console.log('Elapsed ',elapsed);
+    </script>
+</html>
