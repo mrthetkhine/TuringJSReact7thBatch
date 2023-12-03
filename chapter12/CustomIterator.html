@@ -1,0 +1,29 @@
+<html>
+    
+    <script>
+        //n=5 0..4
+        function range(n)
+        {
+            let counter = 0;
+            return {
+                [Symbol.iterator](){
+                    return {
+                        next()
+                        {
+                            //console.log('Counter ',counter);
+                            return {
+                                value : counter,
+                                done : !(counter++ < n)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        let ra = range(3);
+        for(const item of ra)
+        {
+            console.log('Item item',item);
+        }
+    </script>
+</html>

@@ -1,0 +1,65 @@
+<html>
+    
+    <script>
+        function* gen()
+        {
+            console.log('One');
+            yield 1;
+            console.log('Two');
+            yield 2;
+            console.log('Three');
+            yield 3;
+        }
+        let g = gen();
+        /*
+        console.log('G.next ',g.next());
+        console.log('G.next ',g.next());
+        console.log('G.next ',g.next());
+        console.log('G.next ',g.next());
+        */
+       for(const item of g)
+       {
+        console.log('Item ',item); 
+       }
+       function* range(n)
+       {
+        for(let i=0;i<n;i++)
+        {
+            yield i;
+        }
+       }
+       for(const item of range(4))
+       {
+        console.log('Item ',item);
+       }
+       function* toInfinity(from)
+       {
+            let counter = from;
+            while(true)
+            {
+                yield counter++;
+            }
+       }
+       function* take(n,iterable)
+       {
+            let it = iterable[Symbol.iterator]();
+            while(n-- > 0) { // Loop n times:
+                let next = it.next(); // Get the next item from the iterator.
+                if (next.done) 
+                {
+                    return; // If there are no more values, return early
+                }    
+                else 
+                {
+                    yield next.value; // otherwise, yield the value 
+                }
+                    
+            }
+
+       }
+       for(const item of take(5,toInfinity(10)))
+       {
+        console.log('Item=> ',item);
+       }
+    </script>
+</html>

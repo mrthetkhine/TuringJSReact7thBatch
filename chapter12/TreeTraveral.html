@@ -1,0 +1,50 @@
+<html>
+    
+    <script>
+       let obj ={
+            name : 'TK',
+            age : 39,
+            display()
+            {
+                console.log('Display');
+            }
+       }
+       for(const item of Object.entries(obj))
+       {
+        console.log('Item ',item);
+       }
+
+       //name,age
+       //
+      
+        function normalEntries(obj)
+        {
+            let keys = Object.keys(obj);
+            //console.log('Keys ',keys);
+            const types = keys.map(key=>[key,typeof obj[key]]);
+            //console.log('Types ',types);
+            const propertyOnly = types.filter( mapping=> mapping[1]!=='function')
+                                      .map(pair=>pair[0]);
+            //console.log('Property Only ',propertyOnly);
+            let index = 0;
+            return {
+                [Symbol.iterator](){
+                    return {
+                        next()
+                        {
+                            //console.log('Index  ',index, ' ',propertyOnly.length);
+                            return {
+                                value : [propertyOnly[index],obj[propertyOnly[index]]],
+                                done : !(index++ < propertyOnly.length)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for(const [key,value] of normalEntries(obj))
+        {
+            console.log('Key ',key, ' Value ',value);
+        }
+    </script>
+</html>

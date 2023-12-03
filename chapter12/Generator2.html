@@ -1,0 +1,28 @@
+<html>
+    
+    <script>
+        function* gen()
+        {
+            console.log('One');
+            let y1 = yield 1;
+            console.log('Two ',y1);
+            let y2 = yield 2;
+            console.log('Three ', y2 );
+            let y3 = yield 3;
+            console.log('Four ',y3);
+            return 4;
+        }
+        let g = gen();
+        
+        console.log('G.next ',g.next('a'));
+        console.log('G.next ',g.next('b'));
+        console.log('G.next ',g.next('c'));
+        console.log('G.next ',g.next('d'));
+        /*
+       for(const item of g)
+       {
+        console.log('Item ',item); 
+       }
+       */
+    </script>
+</html>
