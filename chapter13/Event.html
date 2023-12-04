@@ -1,0 +1,53 @@
+<html>
+    <body>
+       
+    </body>
+    <script>
+        function getTodo(url,callback)
+        {
+
+            let request = new XMLHttpRequest();
+            request.open('GET',url);
+            request.send();
+            request.onload=function()
+            {
+                if(request.status == 200)
+                {
+                   callback(request.responseText);
+                }
+            }
+            console.log('Done');
+        }
+        let results = [];
+        function callback(data)
+        {
+            results.push(data);
+            if(results.length==3)
+            {
+                let end = new Date();
+                    console.log('Elapsed ', end-start);
+                console.log('Alldone ',results);
+                
+            }
+        }
+        /*
+         let start = new Date();
+
+        getTodo('https://jsonplaceholder.typicode.com/todos/1',callback);
+        getTodo('https://jsonplaceholder.typicode.com/todos/2',callback);
+        getTodo('https://jsonplaceholder.typicode.com/todos/3',callback);
+        */
+       
+      
+        getTodo('https://jsonplaceholder.typicode.com/todos/1',(first)=>{
+            getTodo('https://jsonplaceholder.typicode.com/todos/2',(second)=>{
+                getTodo('https://jsonplaceholder.typicode.com/todos/3',(third)=>{
+                    let end = new Date();
+                    console.log('Elapsed ', end-start);
+                    console.log('First ',first, ' Second ',second, ' third ',third);
+                });
+            });
+        });
+        
+    </script>
+</html>

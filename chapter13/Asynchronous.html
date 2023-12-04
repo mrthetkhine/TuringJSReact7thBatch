@@ -1,7 +1,29 @@
 <html>
     
     <script>
-        console.log('Hello');
-        console.log('World');
+        function factorial(n)
+        {
+            let result = 1;
+            for(let i=1;i<=n;i++)
+            {
+                result *= i;
+            }
+            return result;
+        }
+        function delayFactorial(n,callback)
+        {
+            console.log('Code started');
+            setTimeout(()=>{
+               
+                let result = factorial(n);
+                console.log('Async code executed ',result);
+                callback(result);
+            },2000);
+            console.log('Code end');
+        }
+        delayFactorial(5,(result)=>{
+            console.log('Result from delayed factorial ',result);
+        });
+        console.log('End ' );
     </script>
 </html>

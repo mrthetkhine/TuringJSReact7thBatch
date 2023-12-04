@@ -1,0 +1,38 @@
+<html>
+    <body>
+       
+    </body>
+    <script>
+        function customFetch(url)
+        {
+            return new Promise((resolve,reject)=>{
+                let request = new XMLHttpRequest();
+                request.open('GET',url);
+                request.send();
+                request.onload=function()
+                {
+                    if(request.status == 200)
+                    {
+                        resolve(JSON.stringify( request.responseText));
+                    }
+                }
+            });
+            
+            console.log('Done');
+        }
+        function getSomething()
+        {
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    console.log('Get something executed');
+                    resolve(100);
+                },3000)
+            })
+           
+        }
+        getSomething()
+            .then(data=>console.log('Data ',data))
+        customFetch('https://jsonplaceholder.typicode.com/todos/1')
+            .then(json=>console.log('Data ',json))
+    </script>
+</html>
