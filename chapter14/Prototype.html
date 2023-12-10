@@ -1,0 +1,42 @@
+<html>
+  
+    <script>
+        //"use strict";
+        let obj = {
+            name : 'TK',
+            age : 39,
+            somethingElse:'',
+            arr: [10,20]
+        };
+       console.log('Proptotype ',Object.getPrototypeOf(obj));
+       console.log('Proptotype ',Object.getPrototypeOf([]));
+       console.log('Proptotype ',Object.getPrototypeOf(()=>{}));
+
+       let another = Object.create(obj);
+       console.log('Another ',another);
+       console.log('Another ',another.age);
+
+       another.age = 30;
+       another.arr.push(30);
+       console.log('Another ',another);
+
+       another.arr = ['hello'];
+       console.log('Another ',another);
+
+       let obj2 = Object.create(obj);
+       obj2.arr.push(30);
+
+       console.log('Obj ',obj);
+
+       let anotherParent = {
+        arr:["Hello"]
+       }
+       Object.setPrototypeOf(obj2,anotherParent);
+       console.log('Obj2 ',obj2.arr);
+
+       let obj3={
+        __proto__:anotherParent
+       };
+       console.log('Obj3 ',obj3.arr);
+    </script>
+</html>

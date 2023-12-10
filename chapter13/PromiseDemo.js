@@ -26,4 +26,18 @@ Promise.resolve(undefined)
 */
 Promise.resolve(100)
        .then(x=>Promise.resolve(Promise.resolve(x+2)))
+       //.then(x=>Promise.reject(x+2))
+       /*.then(x=>{
+        throw new Error(x+2);
+       })
+       */
+       .catch(x=>x+10)
+       .finally(()=>{
+        console.log('always excuted ')
+        return 50;
+       })
+       .finally(()=>{
+        console.log('always excuted 2')
+        return 50;
+       })
        .then(console.log)

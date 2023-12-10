@@ -1,0 +1,55 @@
+<html>
+    <body>
+        <div>
+            Name <div id="name">
+                Something
+            </div>
+            Age <div id="age">
+                39
+            </div>
+        </div>
+    </body>
+    <script>
+        let model = {
+            name : 'TK',
+            age : 39
+        };
+       // model.name = "Update";
+        function updateUI(model)
+        {
+            for(let prop in model)
+            {
+                document.getElementById(prop).innerText = model[prop];
+            }
+        }
+        //updateUI(model);
+        function mvc(obj,uiUpdate)
+        {
+            let proxy = {};
+            for(let prop in obj)
+            {
+                if(typeof obj[prop]!=='function')
+                {
+                    Object.defineProperty(proxy,prop,{
+                        get()
+                        {
+                            return obj[prop];
+                        },
+                        set(newValue)
+                        {
+                            obj[prop]=newValue;
+                            uiUpdate(obj);
+                        }
+                    });
+                }
+                {
+                    proxy[prop]= obj[prop];
+                }
+            }
+            return proxy;
+        }
+        let proxy = mvc(model,updateUI);
+        proxy.name="Update";
+        proxy.age = 100;
+    </script>
+</html>

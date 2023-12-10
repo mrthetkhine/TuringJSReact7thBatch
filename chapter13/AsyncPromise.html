@@ -1,0 +1,29 @@
+<html>
+    
+    <script>
+         async function getData()
+         {
+            return 100;
+         }
+         function getPromiseData()
+         {
+            return Promise.resolve(200);
+         }
+         function normalFun()
+         {
+            return 400;
+         }
+         async function test()
+         {
+            let data = await getData();
+            console.log('Data ',data);
+            getData()
+                .then(console.log);
+            let data2 = await getPromiseData();
+            console.log('Data2 ',data2);
+            let data3 = await normalFun();
+            console.log('Data2 ',data3);
+         }
+         test();
+    </script>
+</html>

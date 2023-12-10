@@ -1,0 +1,13 @@
+<html>
+  
+    <script>
+        class EZArray extends Array {
+            get first() { return this[0]; }
+            get last() { return this[this.length-1]; } 
+        }
+        let e = new EZArray(1,2,3);
+        let f = e.map(x => x * x);
+        console.log('get first ',f.first);
+        console.log('get last ',f.last);
+    </script>
+</html>

@@ -1,0 +1,32 @@
+<html>
+    
+    <script>
+         let obj = {
+
+         };
+         Object.defineProperty(obj,"x",{
+            //value:1,
+            configurable:false,
+            //writable:false,
+            enumerable:true,
+            get()
+            {
+                return obj._x;
+            },
+            set(newValue)
+            {
+                obj._x = newValue;
+            }
+         });
+         console.log('Obj ',obj.x);
+         obj.x= 100;
+         console.log('Obj ',obj.x);
+
+         for(let prop in obj)
+         {
+            console.log('Prop ',prop);
+         }
+         delete obj.x;
+         console.log('Obj ',obj);
+    </script>
+</html>

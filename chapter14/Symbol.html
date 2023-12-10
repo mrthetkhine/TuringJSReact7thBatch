@@ -1,0 +1,31 @@
+<html>
+  
+    <script>
+        console.log('Iterator ',Symbol.iterator);
+        let uint8 = { 
+            [Symbol.hasInstance](x) {
+                console.log('Value x ',x);
+                return Number.isInteger(x) && x >= 0 && x <= 255; 
+            }
+        };
+        console.log(128 instanceof uint8);
+        console.log('toString ',{}.toString());
+        console.log('toString ',Object.prototype.toString.call([]));
+        console.log('toString ',Object.prototype.toString.call(''));
+        console.log('Reg toString ',Object.prototype.toString.call(/abc/));
+        function classof(o) {
+            return Object.prototype.toString.call(o).slice(8,-1);
+        }
+        class Human
+        {
+            get [Symbol.toStringTag]() 
+            { 
+                return "Human"; 
+            }
+        }
+        console.log('ClassoF ',classof([]));
+        console.log('ClassoF ',classof(()=>{}));
+        console.log('ClassoF ',classof(new Human()));
+        console.log('toString  ',Object.prototype.toString.call(new Human()));
+    </script>
+</html>

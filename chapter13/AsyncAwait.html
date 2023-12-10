@@ -1,0 +1,56 @@
+<html>
+    
+    <script>
+         let url1 = 'https://jsonplaceholder.typicode.com/todos/1';
+         let url2 = 'https://jsonplaceholder.typicode.com/todos/2';
+
+         /*
+         async function getData(url)
+         {
+            let response = await fetch(url1);
+            let response2 = await fetch(url2);
+            console.log('Response resolve ',response);
+            let json = await response.json();
+            let json2 = await response2.json();
+            console.log('JSON ',json, "json 2 ",json2);
+         }
+         getData(url1);
+         //let response = await fetch(url1);
+         */
+        async function getConcurrentApi()
+        {
+            let urls = [url1,url2];
+            let promises = urls.map(url=>fetch(url)
+                                         .then(res=>res.json()));
+            let jsons = await Promise.all(promises);
+            console.log('JSONs ',jsons);
+        }
+        getConcurrentApi();
+
+        async function getData()
+        {
+            return 10;
+            /*
+            return new Promise((resolve,reject)=>{
+                resolve(10);
+            })
+            */
+        }
+        getData().then(console.log);
+
+        function another()
+        {
+            return new Promise((resolve,reject)=>{
+                resolve(100);
+            }) 
+        }
+        (async function()
+        {
+            let data = await getData();
+            console.log('Getdata ',data);
+            let data2 = await another();
+            console.log('Another ',data2);
+        })();
+        
+    </script>
+</html>

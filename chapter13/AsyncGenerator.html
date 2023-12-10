@@ -1,0 +1,35 @@
+<html>
+    
+    <script>
+         function elapsedTime(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms)); 
+        }
+        async function* clock(interval,max=Infinity)
+        {
+            for(let count = 1; count <= max; count++) 
+            {
+                await elapsedTime(interval);
+                yield count;
+            }
+        }
+        async function test()
+        {
+            for await(let tick of clock(1000,5))
+            {
+                console.log('tick ',tick);
+            }
+            console.log('Done');
+        }
+        async function test2()
+        {
+            for await(let tick of clock(1500,5))
+            {
+                console.log('tick 2',tick);
+            }
+            console.log('Done 2');
+        }
+        test();
+        test2();
+        console.log('Hello');
+    </script>
+</html>

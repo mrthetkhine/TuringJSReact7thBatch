@@ -1,0 +1,23 @@
+<html>
+  
+    <script>
+        class Base
+        {
+            data = [100];
+        }
+        class Child extends Base
+        {
+            another = 'data';
+        }
+        let obj = new Child();
+        console.log('Obj ',obj);
+        console.log('Objectown ',Object.getOwnPropertyNames(obj));
+
+        let obj2 = new Child();
+        console.log('Obj2 ',obj2);
+
+        obj.data.push(200);
+        console.log('Obj ',obj);
+        console.log('Obj2 ',obj2);
+    </script>
+</html>

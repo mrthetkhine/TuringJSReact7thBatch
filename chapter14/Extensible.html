@@ -1,0 +1,29 @@
+<html>
+  
+    <script>
+        //"use strict";
+        let obj = {
+            name : 'TK',
+            age : 39,
+            somethingElse:''
+        };
+       console.log('isExtensible ',Object.isExtensible(obj));
+       Object.preventExtensions(obj);
+       console.log('isExtensible ',Object.isExtensible(obj));
+       obj.newProp="Seomthing"; 
+
+       //let obj2 =Object.create(obj);
+       Object.seal(obj);
+       delete obj.somethingElse;
+       console.log('Obj ',obj);
+
+       console.log('isExtensible ',Reflect.isExtensible(obj));
+       console.log('isSealed ',Object.isSealed(obj));
+
+       Object.freeze(obj);
+       obj.name = "Update";
+       console.log('Obj ',obj);
+
+       console.log('isFrozen ',Object.isFrozen(obj));
+    </script>
+</html>
