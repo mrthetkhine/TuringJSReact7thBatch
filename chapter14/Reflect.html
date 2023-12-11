@@ -1,0 +1,61 @@
+<html>
+  
+    <script>
+        let obj = 
+        {
+            name: "One",
+            hello(msg)
+            {
+                console.log('Msg ',this.name, ' Msg ',msg);
+            }
+        }
+        let obj2 ={
+            name : 'Two'
+        }
+        Reflect.apply(obj.hello,obj2,['Test']);
+
+        class Human
+        {
+            constructor(name,age)
+            {
+                this.name = name;
+                this.age = age;
+                console.log('Human Constructor invoked');
+            }
+        }
+        let human = new Human('TK',39);
+        console.log('Human ',human);
+        let human2 = Reflect.construct(Human,['Aung Aung',20]);
+        console.log('Human2 ',human2);
+
+        /*
+        Object.defineProperty(human2,'age',{
+            value:39,
+            get()
+            {
+                return 10;
+            }
+        });
+        */
+        Reflect.defineProperty(human2,'age',{
+            value:39,
+            
+        });
+        console.log('Human2 ',human2);
+        console.log('Get ',Reflect.get(human2,'age'));
+        console.log('PropertyDescriptor ',Reflect.getOwnPropertyDescriptor(human2,'age'));
+        //console.log('PropertyDescriptor ',Object.getOwnPropertyDescriptor(undefined,'age'));
+        console.log('Prototype ',Reflect.getPrototypeOf(human2));
+        console.log('Prototype ',Object.getPrototypeOf(obj2));
+        console.log('has age ',Reflect.has(human2,'age'));
+
+        console.log('isExtensible ',Object.isExtensible(null));
+        //console.log('isExtensible ',Reflect.isExtensible(null));
+
+        console.log('OwnKeys ',Reflect.ownKeys(human2));
+
+        Reflect.preventExtensions(human2);
+        Reflect.set(human2,'name',400);
+        console.log('Human2 ',human2);
+    </script>
+</html>

@@ -1,0 +1,56 @@
+<html>
+  
+    <script>
+        let target = {
+            name :'TK',
+            age: 39,
+            hello()
+            {
+
+            }
+        };
+        let proxy = new Proxy(target,{
+            get(o, name, target) { 
+                //console.log('Getter ',o, ' name ',name, ' target ',target);
+                if(typeof o[name]==='function')
+                {
+                    console.log('Function ',name, ' invoked');
+                }
+                return o[name]; 
+            },
+            ownKeys(o) { 
+                return ['a','b'];
+            },
+            deleteProperty(o,name)
+            {
+                if(name=='age')
+                {
+                    console.warn('Trying to delete age');
+                }
+                else
+                {
+                    delete o[name];
+                }
+            },
+            set(o, name, value, target) 
+            { 
+                //console.log('Setter ',name);
+                if(!o[name])
+                {
+                    console.warn('trying to set new property ',name);
+                }
+                o[name]= value;
+            },
+        });
+        proxy.address = 'Ygn';
+        console.log('target ',target);
+        console.log('proxy.name ',proxy.age);
+        proxy.hello();
+
+        console.log('OwnKeys ',Object.getOwnPropertyNames(proxy));
+
+        delete proxy.name;
+        delete proxy.age;
+        console.log('Proxy ',proxy);
+    </script>
+</html>
