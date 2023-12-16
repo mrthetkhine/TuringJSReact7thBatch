@@ -1,0 +1,33 @@
+<html>
+  
+    <body>
+        <div id="time">
+            Time
+        </div>
+        <button type="button" id="btnLoad">Load</button>
+    </body>
+    <script defer>
+        console.log('Defered');
+    </script>
+    <script async src="async.js">
+    </script>
+    <script>
+        console.log('One');
+    </script>
+    <script>
+        
+        setInterval(()=>{
+            document.getElementById('time').innerText = new Date();
+        },1000);
+
+        try
+        {
+            throw new Error('Problem');
+        }
+        catch(e)
+        {
+            console.log(e);
+        }
+        console.log('Another line');
+    </script>
+</html>

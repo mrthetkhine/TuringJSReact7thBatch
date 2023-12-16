@@ -1,0 +1,53 @@
+<html>
+    <style>
+        #container
+        {
+            height:50px;
+            background-color: lightblue;
+        }
+    </style>    
+    <body >
+        <div id="parent">
+            Parent
+            <div id="container">
+                Container
+            </div>
+         
+            <button type="button" id="btnTrigger">Trigger</button>
+            <a href="http://www.google.com" onclick="console.log('Fire');return false">Go somewhere</a>
+        </div>
+       
+    </body>
+   
+    <script>
+       
+     
+        document.body.addEventListener('contextmenu',(event)=>{
+            console.log('Right click');
+            return false;
+            //event.preventDefault();
+        },{
+            //passive:true
+        });
+    
+        document.getElementById('container').addEventListener('click',(event)=>{
+            console.log('Container click ',event);
+            event.stopImmediatePropagation();
+        });
+        document.getElementById('container').addEventListener('click',(event)=>{
+            console.log('Container click2 ',event);
+            //event.stopPropagation();
+           
+        });
+        document.getElementById('parent').addEventListener('click',(event)=>{
+            console.log('Parent click ',event.target==event.currentTarget);
+            
+        });
+        document.getElementById('btnTrigger').addEventListener('click',()=>{
+            const event = new Event("click");
+            document.getElementById('container').dispatchEvent(event);
+            
+        });
+        
+    </script>
+</html>

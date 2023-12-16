@@ -1,0 +1,19 @@
+<html>
+  
+    <body>
+       <input type="text" id="userComment">
+        <button type="button" id="btnAppend">Append</button>
+        <div id="container">
+
+        </div>
+    </body>
+   
+    <script>
+        document.getElementById('btnAppend').addEventListener('click',()=>{
+            let userComment = document.getElementById('userComment').value;
+            //document.getElementById('container').innerHTML = userComment;
+            document.getElementById('container').innerText = userComment;
+        });
+      
+    </script>
+</html>
