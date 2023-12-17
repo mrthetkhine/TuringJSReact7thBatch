@@ -1,0 +1,35 @@
+<html>
+    <style>
+       
+      
+        .c2
+        {
+            color:green;
+        }
+    </style>    
+    <body id="container">
+        <div id="divContainer" background="blue" class="c1">
+            Container
+        </div>
+        <div id="anotherId">
+            AnotherId
+        </div>
+       
+    </body>
+     
+    <script>
+       let divContainer = document.getElementById('divContainer');
+       //divContainer.textContent ="<h1>Normal Text</h1>";
+       //divContainer.innerHTML ="<h1>Normal Text</h1>";
+       divContainer.innerText ="<h1>Normal Text</h1>";
+       //divContainer.outerText ="<h1>Normal Text</h1>";
+       //divContainer.outerHTML ="<h1>Normal Text</h1>";
+
+       let element = document.createElement('h3');
+       element.textContent= 'h3 content';
+       //divContainer.append(element);
+       //divContainer.prepend(element);
+       //divContainer.before(element);
+       divContainer.after(element);
+    </script>
+</html>

@@ -1,0 +1,53 @@
+<html>
+    <style>
+        #container
+        {
+            height:50px;
+            background-color: lightblue;
+        }
+    </style>    
+    <body >
+        <div id="parent">
+            Parent
+        </div>
+        <div id="anotherId">
+            AnotherId
+        </div>
+       <div>
+        Another
+       </div>
+       <div class="another-class">
+        Another class
+       </div>
+       <span class="another-class">
+        Another class with span
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwmfUjmHUOQTudBQLun8sxEndTzIdK50dGSg&usqp=CAU"/>
+       </span>
+    </body>
+   
+    <script>
+       let element = document.createElement('h2');
+       element.textContent = "Hello World";
+       document.getElementById('parent').appendChild(element);
+
+       for(let i=0, len = document.getElementsByTagName('div').length ;i<len ;i++)
+       {
+        let parent=  document.getElementsByTagName('div')[i];
+        console.log('Parent ',parent);
+        let div = document.createElement('div');
+        div.textContent = "Hello World";
+        parent.appendChild(div);
+       }
+       console.log('classname ',document.getElementsByClassName('another-class'));
+       console.log('Images ',document.images);
+
+       console.log('AnotherId ',anotherId);
+       function hello()
+       {
+        let anotherId="Hello";
+         console.log('AnotherId ',anotherId);
+       }
+       hello();
+      
+    </script>
+</html>

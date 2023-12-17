@@ -1,0 +1,44 @@
+<html>
+    <style>
+        #container
+        {
+            height:50px;
+            background-color: lightblue;
+        }
+    </style>    
+    <body id="container">
+        <div >
+            Container
+        </div>
+        <div id="anotherId">
+            AnotherId
+        </div>
+       <div>
+        Another
+       </div>
+       <div class="another-class">
+        Another class
+       </div>
+       <span class="another-class">
+        Another class with span
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwmfUjmHUOQTudBQLun8sxEndTzIdK50dGSg&usqp=CAU"/>
+       </span>
+    </body>
+   
+    <script>
+        let node = document.getElementById('container');
+        console.log('Name ',node.nodeName);
+        console.log('Type ',node.nodeType);
+        console.log('Parent ',node.parentNode);
+        console.log('Document.body.children ',document.body.children);
+        console.log('ChildElement count ',node.childElementCount);
+        console.log('firstElement ',node.firstElementChild);
+        console.log('lastElement ',node.lastElementChild);
+        console.log('firstChild ',node.firstChild);
+        console.log('lastChild ',node.lastChild);
+
+        let another = document.getElementById('anotherId');
+        console.log('Prev sibliing ',another.previousElementSibling);
+        console.log('Next sibliing ',another.nextElementSibling);
+    </script>
+</html>

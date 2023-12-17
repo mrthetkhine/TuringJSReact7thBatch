@@ -1,0 +1,79 @@
+<html>
+    <style>
+        #container
+        {
+            height:50px;
+            background-color: lightblue;
+        }
+        #divContainer
+        {
+            background-color: red;
+        }
+        .c2
+        {
+            color:green;
+        }
+    </style>    
+    <body id="container">
+        <div id="divContainer" background="blue" class="c1">
+            Container
+        </div>
+        <div id="anotherId">
+            AnotherId
+        </div>
+       <div>
+        Another
+       </div>
+       <div class="another-class">
+        Another class
+       </div>
+       <span class="another-class">
+        Another class with span
+        <img id='myImage' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwmfUjmHUOQTudBQLun8sxEndTzIdK50dGSg&usqp=CAU"/>
+       </span>
+       <table>
+            <thead>
+                <th>Id</th>
+                <th>Data</th>
+            </thead>
+            <tbody id="tblData">
+                <tr data-tid="1">
+                    <td> 1</td>
+                    <td> One</td>
+                </tr>
+                <tr data-tid="2">
+                    <td>2</td>
+                    <td> Two</td>
+                </tr>
+            </tbody>
+       </table>
+    </body>
+    <style>
+      
+        #divContainer
+        {
+            background-color: red;
+        }
+    </style>    
+    <script>
+       let divContainer = document.getElementById('divContainer');
+       console.log('Background ',divContainer.backgroundColor);
+       divContainer.backgroundColor = 'red';
+       divContainer.removeAttribute('background');
+
+       console.log('Src ',document.getElementById('myImage').src);
+
+       console.log('Class ',divContainer.classList);
+       divContainer.classList.add('c2');
+       divContainer.classList.remove('c1');
+
+       console.log('Tr ',document.querySelectorAll('tr'));
+       document.querySelector('#tblData').addEventListener('click',(event)=>{
+        console.log('Target ',event.target);
+       
+        let row = event.target.closest('tr');
+        console.log('Id ',row.dataset.tid);
+        
+       });
+    </script>
+</html>

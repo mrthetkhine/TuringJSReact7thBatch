@@ -1,0 +1,44 @@
+<html>
+    <style>
+        #container
+        {
+            height:50px;
+            background-color: lightblue;
+        }
+    </style>    
+    <body >
+        <div id="parent">
+            Parent
+            <div id="container" class="my-class-one">
+                Container
+            </div>
+            <h1> This is h1</h1>
+            <span class="my-class-one">
+                Span with my-class-one
+            </span>
+            User Name<input name="username"/>
+            Password<input name="password"/>
+            <button type="button" id="btnTrigger">Trigger</button>
+            <button type="submit" id="btnSubmit">Submit</button>
+            <span>
+                Span 2
+                <span class="my-class-one">
+                    Another deep span
+                </span>
+            </span>
+            <a href="http://www.google.com" onclick="console.log('Fire');return false">Go somewhere</a>
+        </div>
+       
+    </body>
+   
+    <script>
+       //console.llog('Column ',document.querySelectorAll('col.selected||td'));
+       console.log('div span ',document.querySelectorAll('div span'));
+       console.log('div,span ',document.querySelectorAll('div,span'));
+       console.log('button~span ',document.querySelectorAll('button~span'));
+       console.log('button ',document.querySelectorAll('button[type="button"]'));
+
+       console.log('name ',document.getElementsByName('username'));
+       console.log('tagName ',document.getElementsByTagName('div'));
+    </script>
+</html>

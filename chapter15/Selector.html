@@ -1,0 +1,42 @@
+<html>
+    <style>
+        #container
+        {
+            height:50px;
+            background-color: lightblue;
+        }
+    </style>    
+    <body >
+        <div id="parent">
+            Parent
+            <div id="container" class="my-class-one">
+                Container
+            </div>
+            <h1> This is h1</h1>
+            <span class="my-class-one">
+                Span with my-class-one
+            </span>
+            <button type="button" id="btnTrigger">Trigger</button>
+            <span>
+                Span 2
+                <span class="my-class-one">
+                    Another deep span
+                </span>
+            </span>
+            <a href="http://www.google.com" onclick="console.log('Fire');return false">Go somewhere</a>
+        </div>
+       
+    </body>
+   
+    <script>
+       let container = document.querySelector('#container');
+        container.style.backgroundColor = 'green';
+        console.log('all div ',document.querySelectorAll("div"));
+        console.log('class .my-class-one ',document.querySelectorAll(".my-class-one"));
+        console.log('class div.my-class-one ',document.querySelectorAll("div.my-class-one"));
+        console.log('all  ',document.querySelectorAll("*"));
+        console.log('h1+span  ',document.querySelectorAll("h1+span"));
+        console.log('div>span  ',document.querySelectorAll("div>span"));
+        console.log('div>.my-class-one  ',document.querySelectorAll("div>.my-class-one"));
+    </script>
+</html>
