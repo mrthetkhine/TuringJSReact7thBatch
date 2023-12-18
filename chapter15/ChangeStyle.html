@@ -1,0 +1,41 @@
+<html>
+    <link rel="stylesheet" id="theme" href="dark.css">
+    <style>
+        .transparent { opacity: 0; }
+        .fadeable { 
+            transition: opacity 1s ease-in ;
+            opacity: 1;
+        }
+    </style>
+    <body id="container">
+        <div id="divContainer"class="c1 transparent" style="color:gray;">
+            Div Container
+            <div id="childContainer">
+                Child
+            </div>
+        </div>
+        <div id="anotherId">
+            AnotherId
+        </div>
+        <button type="button" id="btnLoad">
+            load
+        </button>
+       
+    </body>
+     
+    <script>
+        function setTheme(name)
+        {
+            let link = document.createElement("link"); 
+            link.id = "theme";
+            link.rel = "stylesheet";
+            link.href = `${name}.css`;
+            let currentTheme = document.querySelector("#theme");
+            currentTheme.replaceWith(link);
+        }
+        document.getElementById('btnLoad').addEventListener('click',()=>{
+            setTheme('light');
+            document.getElementById('divContainer').classList.add('fadeable');
+        });
+    </script>
+</html>

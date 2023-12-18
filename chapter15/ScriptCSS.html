@@ -1,0 +1,42 @@
+<html>
+    <style>
+       
+      
+        .c2
+        {
+            color:green;
+        }
+    </style>    
+    <body id="container">
+        <div id="divContainer"class="c1" style="color:gray;">
+            Div Container
+            <div id="childContainer">
+                Child
+            </div>
+        </div>
+        <div id="anotherId">
+            AnotherId
+        </div>
+        <button type="button" id="btnAddClass">
+            Add Class
+        </button>
+       
+    </body>
+     
+    <script>
+        document.getElementById('btnAddClass').addEventListener('click',()=>{
+            let element =  document.getElementById('divContainer');
+            //element.classList.add('c2');
+
+            /*
+            element.style.background='gray';
+            element.style.color='red';
+            */
+           console.log('CSS Text',element.style.cssText);
+           let styles ="background:gray;color:yellow";
+           element.style.cssText = styles;
+
+           console.log('Computed Style ',window.getComputedStyle(document.getElementById('childContainer')));
+        });
+    </script>
+</html>

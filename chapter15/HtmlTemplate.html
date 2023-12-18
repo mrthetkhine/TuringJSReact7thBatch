@@ -1,0 +1,63 @@
+<html>
+  
+    <template id="row">
+        <tr>
+            <td>1</td>
+            <td>One</td>
+        </tr>
+    </template>
+    <body id="container">
+        <table border="1">
+            <thead>
+                <th>Id</th>
+                <th>Name</th>
+            </thead>
+            <tbody id="tblContainer">
+
+            </tbody>
+        </table>
+        <button type="button" id="btnCreate">Create</button>
+    </body>
+     
+    <script>
+        let data =[
+            {
+                id:1,
+                name :'One'
+            },
+            {
+                id:2,
+                name :'Two'
+            },
+        ];
+       document.getElementById('btnCreate').addEventListener('click',()=>{
+        console.log('CLick');
+
+            for(let i=0;i<data.length;i++)
+            {
+                let json = data[i];
+                /*
+                let row = '<tr>'
+                            +'<td>'+json.id+'</td>'
+                            +'<td>'+json.name+'</td>'
+                    +'</tr>';
+                */
+               let row = `
+                    <tr>
+                            <td>${json.id}</td>
+                            <td>${json.name}</td>
+                    </tr>    
+                `;
+                /*
+                let tr = document.createElement('tr');
+                tr.innerHTML = row;
+                document.getElementById('tblContainer').append(tr);
+                */
+                let template = document.querySelector("#row");
+                let clone = template.content.cloneNode(true); 
+                document.getElementById('tblContainer').append(clone);
+            }
+       });
+       
+    </script>
+</html>

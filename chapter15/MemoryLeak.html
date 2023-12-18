@@ -1,0 +1,44 @@
+<html>
+    <style>
+       
+      
+        .c2
+        {
+            color:green;
+        }
+    </style>    
+    <body id="container">
+        <div id="divContainer" background="blue" class="c1">
+            Container
+        </div>
+        <div id="anotherId">
+            AnotherId
+        </div>
+        <button type="button" id="btnRemove">
+            Remove Container
+        </button>
+       
+    </body>
+     
+    <script>
+       let divContainer = document.getElementById('divContainer');
+       let data;
+       function handler2 ()
+       {
+        data = new Array(100_000_00);
+        console.log('Click container');
+       }
+       divContainer.addEventListener('click',handler2);
+       
+       function handler()
+       {
+            divContainer.remove();
+            data = null;
+       }
+       document.getElementById('btnRemove').addEventListener('click',handler);
+      
+       document.addEventListener('DOMContentLoaded',(event)=>{
+        console.log('DOMcontent loaded');
+       });
+    </script>
+</html>

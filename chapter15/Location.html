@@ -1,0 +1,29 @@
+<html>
+  
+    <template id="row">
+        <tr>
+            <td>1</td>
+            <td>One</td>
+        </tr>
+    </template>
+    <body id="container">
+       
+        <button type="button" id="btnGo">Go</button>
+        <button type="button" id="btnBack">Back</button>
+    </body>
+     
+    <script>
+        console.log('Location ',window.location);
+        document.getElementById('btnGo').addEventListener('click',()=>{
+            //window.location ='http://www.google.com';
+            window.location.hash='page2';
+        });
+        document.getElementById('btnBack').addEventListener('click',()=>{
+            window.history.go(-1);
+        });
+
+        window.addEventListener('hashchange',(event)=>{
+            console.log('hash change ',event);
+        });
+    </script>
+</html>

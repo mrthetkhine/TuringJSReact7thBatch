@@ -1,0 +1,135 @@
+<html>
+  
+    <body id="container">
+        <div id="divContainer">
+            Div Container
+            <div id="childContainer">
+                Child
+            </div>
+        </div>
+        <button type="button" id="btnScrollDown">
+            Down
+        </button>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
+        <div id="anotherId">
+            AnotherId
+        </div>
+        <button type="button" id="btnLoad">
+            load
+        </button>
+       
+    </body>
+     
+    <script>
+       
+       document.addEventListener('click',(event)=>{
+            console.log('Element ',document.elementFromPoint(event.clientX,event.clientY));
+       })
+       console.log('BoundingRect ',document.getElementById('divContainer').getBoundingClientRect());
+       document.getElementById('btnScrollDown').addEventListener('click',()=>{
+            let documentHeight = document.documentElement.offsetHeight; 
+            let viewportHeight = window.innerHeight;
+            console.log(documentHeight - viewportHeight);
+            window.scrollTo(0, documentHeight - viewportHeight);
+        }); 
+       document.getElementById('btnLoad').addEventListener('click',()=>{
+            
+            window.scrollTo({
+                    left:0,
+                    top:0,
+                    behavior:'smooth'
+                });
+           
+        });
+    </script>
+</html>
