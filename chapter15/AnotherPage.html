@@ -1,0 +1,23 @@
+<html>
+  
+   
+    <body id="container">
+       
+       
+    </body>
+     
+    <script>
+        let name = localStorage.username;
+        if(!name)
+        {
+            name = prompt("What is your name?"); 
+            localStorage.username = name;
+        }
+        console.log('Name ',name);
+        let obj = {
+            name :'TK',
+            age : 39
+        };
+        localStorage.obj = JSON.stringify(obj);
+    </script>
+</html>

@@ -1,0 +1,25 @@
+<html>
+  
+   
+    <body id="container">
+       
+       
+    </body>
+     
+    <script>
+        let name = localStorage.username;
+        if(!name)
+        {
+            name = prompt("What is your name?"); 
+            localStorage.username = name;
+        }
+        console.log('Name ',name);
+       /*
+        let obj = JSON.parse( localStorage.obj);
+        console.log('Obj ',obj);
+        */
+       window.addEventListener('storage',(event)=>{
+        console.log(event);
+       })
+    </script>
+</html>
