@@ -7,7 +7,8 @@ let customLogger = require('./middleware/logger');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var todoRouter = require('./routes/todos');
-
+const { db } = require('./config/database');
+const mongoose = require('mongoose');
 var app = express();
 
 // view engine setup
@@ -20,6 +21,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+mongoose.connect(db, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log('MongoDB connected!'))
+    .catch(err => console.log(err));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

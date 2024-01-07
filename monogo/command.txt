@@ -1,0 +1,201 @@
+show databases;
+
+use react_7th_batch_test;
+
+show collections;
+
+db.movies.insertOne(
+  {
+    title: "The Favourite",
+    genres: [ "Drama", "History" ],
+    runtime: 121,
+    rated: "R",
+    year: 2018,
+    directors: [ "Yorgos Lanthimos" ],
+    cast: [ "Olivia Colman", "Emma Stone", "Rachel Weisz" ],
+    type: "movie"
+  }
+)
+db.movies.insertOne(
+  {
+    title: "Titanic",
+    genres: [ "Drama", "History" ],
+    runtime: 121,
+    rated: "R",
+    year: 2018,
+    directors: [ "Jame Cameron" ],
+    actors: [ {
+        firstName:"Leonardo",
+        lastName:"Decpario"
+    },{
+        firstName:"Kate",
+        lastName:"Winslect"
+    } ],
+    type: "movie"
+  }
+)
+db.movies.insertMany([
+   {
+      title: "Jurassic World: Fallen Kingdom",
+      genres: [ "Action", "Sci-Fi" ],
+      runtime: 130,
+      rated: "PG-13",
+      year: 2018,
+      directors: [ "J. A. Bayona" ],
+      cast: [ "Chris Pratt", "Bryce Dallas Howard", "Rafe Spall" ],
+      type: "movie"
+    },
+    {
+      title: "Tag",
+      genres: [ "Comedy", "Action" ],
+      runtime: 105,
+      rated: "R",
+      year: 2018,
+      directors: [ "Jeff Tomsic" ],
+      cast: [ "Annabelle Wallis", "Jeremy Renner", "Jon Hamm" ],
+      type: "movie"
+    }
+])
+
+db.movies.find( { "title": "Titanic" } )
+
+//AND
+db.movies.find( { "title": "Titanic","year":2018 } )
+
+//OR 
+db.movies.find( { 
+    $or:[
+        {
+            "title": "Titanic"
+        },
+        {
+            "year":2018
+        }
+    ]
+} )
+
+//rate==R AND (title== Titanic Or year ==2018)
+db.movies.find({ 
+    "rated":"R",
+    $or:[
+        {
+            "title": "Titanic"
+        },
+        {
+            "year":2018
+        }
+    ]
+})
+
+
+//rate ==R or PG-13
+db.movies.find( { rated: { $in: [ "R", "PG-13" ] } } )
+
+db.movies.find( { year: {$gte:2018}})
+
+db.inventory.insertMany( [
+   { item: "journal", qty: 25, size: { h: 14, w: 21, uom: "cm" }, status: "A" },
+   { item: "notebook", qty: 50, size: { h: 8.5, w: 11, uom: "in" }, status: "A" },
+   { item: "paper", qty: 100, size: { h: 8.5, w: 11, uom: "in" }, status: "D" },
+   { item: "planner", qty: 75, size: { h: 22.85, w: 30, uom: "cm" }, status: "D" },
+   { item: "postcard", qty: 45, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" }
+]);
+
+db.inventory.find( { size: { h: 14, w: 21, uom: "cm" } } )
+
+db.inventory.find( { size: { w: 21, h: 14, uom: "cm" } } )
+
+db.inventory.insertMany([
+   { item: "journal", qty: 25, tags: ["blank", "red"], dim_cm: [ 14, 21 ] },
+   { item: "notebook", qty: 50, tags: ["red", "blank"], dim_cm: [ 14, 21 ] },
+   { item: "paper", qty: 100, tags: ["red", "blank", "plain"], dim_cm: [ 14, 21 ] },
+   { item: "planner", qty: 75, tags: ["blank", "red"], dim_cm: [ 22.85, 30 ] },
+   { item: "postcard", qty: 45, tags: ["blue"], dim_cm: [ 10, 15.25 ] }
+]);
+
+//order
+db.inventory.find( { tags: ["red", "blank"] } )
+
+//all
+db.inventory.find( { tags: { $all: ["red", "blank"] } } )
+
+db.inventory.find( { tags: "red" } )
+
+//condition can match across multiple element
+db.inventory.find( { dim_cm: { $gt: 15, $lt: 20 } } )
+
+//for single element
+db.inventory.find( { dim_cm: { $elemMatch: { $gt: 22, $lt: 30 } } } )
+
+db.inventory.find( { "dim_cm.1": { $gt: 25 } } )
+
+db.inventory.find( { "tags": { $size: 3 } } )
+
+db.inventory.insertMany( [
+   { item: "journal", instock: [ { warehouse: "A", qty: 5 }, { warehouse: "C", qty: 15 } ] },
+   { item: "notebook", instock: [ { warehouse: "C", qty: 5 } ] },
+   { item: "paper", instock: [ { warehouse: "A", qty: 60 }, { warehouse: "B", qty: 15 } ] },
+   { item: "planner", instock: [ { warehouse: "A", qty: 40 }, { warehouse: "B", qty: 5 } ] },
+   { item: "postcard", instock: [ { warehouse: "B", qty: 15 }, { warehouse: "C", qty: 35 } ] }
+]);
+
+db.inventory.find( { "instock": { warehouse: "A", qty: 5 } } )
+db.inventory.find( { "instock": { warehouse: "A"} } )
+
+db.movies.find({
+    "actors":{
+            "firstName":"Leonardo",
+            "lastName":"Decpario"
+    }
+})
+
+db.movies.find({
+    "actors.firstName":"Leonardo"
+});
+
+db.inventory.find( { "instock": { $elemMatch: { qty: { $gt: 10, $lte: 20 } } } } )
+
+db.inventory.find( { status: "A" }, { item: 1, status: 1 } )
+
+db.inventory.insertMany( [
+   { item: "canvas", qty: 100, size: { h: 28, w: 35.5, uom: "cm" }, status: "A" },
+   { item: "journal", qty: 25, size: { h: 14, w: 21, uom: "cm" }, status: "A" },
+   { item: "mat", qty: 85, size: { h: 27.9, w: 35.5, uom: "cm" }, status: "A" },
+   { item: "mousepad", qty: 25, size: { h: 19, w: 22.85, uom: "cm" }, status: "P" },
+   { item: "notebook", qty: 50, size: { h: 8.5, w: 11, uom: "in" }, status: "P" },
+   { item: "paper", qty: 100, size: { h: 8.5, w: 11, uom: "in" }, status: "D" },
+   { item: "planner", qty: 75, size: { h: 22.85, w: 30, uom: "cm" }, status: "D" },
+   { item: "postcard", qty: 45, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" },
+   { item: "sketchbook", qty: 80, size: { h: 14, w: 21, uom: "cm" }, status: "A" },
+   { item: "sketch pad", qty: 95, size: { h: 22.85, w: 30.5, uom: "cm" }, status: "A" }
+] );
+db.inventory.updateOne(
+   { item: "paper" },
+   {
+     $set: { "size.uom": "cm", status: "P" },
+     $currentDate: { lastModified: true }
+   }
+)
+
+db.inventory.updateOne(
+   { _id: ObjectId("659a7816c9c4b8ae77661969") },
+   {
+     $set: { "item": "paper-updated" },
+     $currentDate: { lastModified: true }
+   }
+)
+db.inventory.updateMany(
+   { "qty": { $lt: 50 } },
+   {
+     $set: { "size.uom": "in", status: "P" },
+     $currentDate: { lastModified: true }
+   }
+)
+db.inventory.replaceOne(
+   { item: "paper" },
+   { item: "paper", instock: [ { warehouse: "A", qty: 60 }, { warehouse: "B", qty: 40 } ] }
+)
+db.inventory.find({ status : "A" })
+db.inventory.deleteMany({ status : "A" })
+
+db.inventory.deleteOne( { status: "D" } )
