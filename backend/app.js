@@ -7,6 +7,8 @@ let customLogger = require('./middleware/logger');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var todoRouter = require('./routes/todos');
+let movieRouter = require('./routes/movies');
+let reviewRouter = require('./routes/reviews');
 const { db } = require('./config/database');
 const mongoose = require('mongoose');
 var app = express();
@@ -30,8 +32,10 @@ mongoose.connect(db, {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/todos', todoRouter);
-
+app.use('/api/todos', todoRouter);
+app.use('/api/movies'/*,auth.verifyUserToken*/, movieRouter);
+//app.use('/api/movies', movieRouter);
+app.use('/api/reviews'/*, auth.verifyUserToken*/,reviewRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

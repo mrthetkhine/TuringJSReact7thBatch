@@ -199,3 +199,18 @@ db.inventory.find({ status : "A" })
 db.inventory.deleteMany({ status : "A" })
 
 db.inventory.deleteOne( { status: "D" } )
+
+//Join
+db.reviews.aggregate([
+  { 
+        "$lookup": {
+            "from": "movies",
+            "localField": "movie",
+            "foreignField": "_id",
+            "as": "movie"
+        } 
+  },
+  {
+        $unwind : "$movie" 
+  },
+]);
