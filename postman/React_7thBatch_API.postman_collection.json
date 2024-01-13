@@ -8,6 +8,66 @@
 	},
 	"item": [
 		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"admin\",\n    \"password\":\"admin\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"admin\",\n    \"password\":\"admin\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/users/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "reviews",
 			"item": [
 				{
@@ -45,14 +105,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/reviews/movie/64a00b49db2bbb0535da6cff",
+							"raw": "{{url}}/reviews/movie/659c048fc74501e3db447c84",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"reviews",
 								"movie",
-								"64a00b49db2bbb0535da6cff"
+								"659c048fc74501e3db447c84"
 							]
 						}
 					},
@@ -71,7 +131,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"movie\":\"64a00b49db2bbb0535da6cff\",\n    \"rating\":5,\n    \"review\":\"Good in special effect\"\n}"
+							"raw": "{\n    \"movie\":\"659c048fc74501e3db447c84\",\n    \"rating\":5,\n    \"review\":\"Good SciFi movies\"\n}"
 						},
 						"url": {
 							"raw": "{{url}}/reviews",
@@ -141,7 +201,17 @@
 					"name": "GetReviewById",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{url}}/reviews/659c05a6db266db6af685e30",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reviews",
+								"659c05a6db266db6af685e30"
+							]
+						}
 					},
 					"response": []
 				}
@@ -270,7 +340,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\n    \"title\": \"Avata 23\",\n    \"director\": {\n        \"name\": \"Jame Cameron\",\n        \"phoneNo\": \"09993\",\n         \"_id\": \"64a00b49db2bbb0535da6d00\"\n    },\n    \"year\": 2025\n\n}"
+							"raw": "{\n\n    \"title\": \"Avatar 2\",\n    \"director\": {\n        \"name\": \"Jame Cameron\",\n        \"phoneNo\": \"09993\"\n    },\n    \"year\": 2025\n}"
 						},
 						"url": {
 							"raw": "{{url}}/movies",
@@ -380,14 +450,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/movies/title/Dark Night",
+							"raw": "{{url}}/movies/title/Avatar",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"movies",
 								"title",
-								"Dark Night"
+								"Avatar"
 							]
 						}
 					},
@@ -473,7 +543,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/todos/1",
+							"raw": "http://localhost:3000/todos/659bf82a08be91efcb03bf85",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -481,7 +551,7 @@
 							"port": "3000",
 							"path": [
 								"todos",
-								"1"
+								"659bf82a08be91efcb03bf85"
 							]
 						}
 					},
@@ -489,9 +559,21 @@
 				},
 				{
 					"name": "CreateTodo",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Todo 5\",\n    \"completed\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:3000/todos",
 							"protocol": "http",
@@ -509,17 +591,27 @@
 				{
 					"name": "UpdateTodo",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"title\": \"Todo 5 updated2\",\n        \"completed\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3000/todos",
+							"raw": "http://localhost:3000/todos/659bfbeaf2d1866948000fcf",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"todos"
+								"todos",
+								"659bfbeaf2d1866948000fcf"
 							]
 						}
 					},
