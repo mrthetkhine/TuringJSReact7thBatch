@@ -13,6 +13,14 @@ import ListDemo from "./components/ListDemo";
 import TableDemo from "./components/TableDemo";
 import TimeDemo from "./components/TimeDemo";
 import EventDemo from "./components/events/EventDemo";
+import Counter from "./components/Counter";
+import Parent from "./components/rendering/Parent";
+import Timer from "./components/rendering/Timer";
+import Snapshot from "./components/rendering/Snapshot";
+import CounterProblem from "./components/rendering/CounterProblem";
+import EqualityDemo from "./components/rendering/EqualityDemo";
+import Link from "next/link";
+import TodoListDemo from "./components/rendering/TodoListDemo";
 export default function Home() {
     console.log('CreateElement ',React.createElement);
 
@@ -49,7 +57,17 @@ export default function Home() {
           {/*<ListDemo/>*/}
           {/*<TableDemo/>*/}
          {/* <TimeDemo date={date}/>*/}
-          <EventDemo/>
+         {/* <EventDemo/>*/}
+        {/*  <Counter/>*/}
+         {/* <hr/>
+          <Counter/>*/}
+          {/*<Parent/>*/}
+         {/* <Timer/>*/}
+          {/*<Snapshot/>*/}
+        {/*  <CounterProblem/>*/}
+        {/*  <EqualityDemo/>*/}
+         {/* <ListDemo/>*/}
+          <TodoListDemo/>
       </div>
     </main>
   )
