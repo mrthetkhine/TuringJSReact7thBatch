@@ -1,0 +1,6 @@
+.todo-item
+{
+    min-height: 30px;
+    border-bottom: 1px solid gray;
+    /*background: lightgray;*/
+}

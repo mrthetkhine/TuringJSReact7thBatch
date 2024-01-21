@@ -21,6 +21,9 @@ import CounterProblem from "./components/rendering/CounterProblem";
 import EqualityDemo from "./components/rendering/EqualityDemo";
 import Link from "next/link";
 import TodoListDemo from "./components/rendering/TodoListDemo";
+import FormDemo from "./components/form/FormDemo";
+import TabDemo from "./components/tab/TabDemo";
+import TodoVersion2 from "./components/rendering/TodoVersion2";
 export default function Home() {
     console.log('CreateElement ',React.createElement);
 
@@ -29,6 +32,8 @@ export default function Home() {
         age: 23,
     }
     let date = new Date();
+
+    let headers =['Tab1','Tab2','Tab3'];
   return (
     <main >
       <div >
@@ -67,7 +72,20 @@ export default function Home() {
         {/*  <CounterProblem/>*/}
         {/*  <EqualityDemo/>*/}
          {/* <ListDemo/>*/}
-          <TodoListDemo/>
+         {/* <TodoListDemo/>*/}
+         {/* <FormDemo/>*/}
+          {/*<TabDemo headers={headers}>
+              <div>
+                  Page 1
+              </div>
+              <div>
+                  Page 2
+              </div>
+              <div>
+                  Page 3
+              </div>
+          </TabDemo>*/}
+          <TodoVersion2/>
       </div>
     </main>
   )

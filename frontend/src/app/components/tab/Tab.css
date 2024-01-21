@@ -1,0 +1,14 @@
+.tab-header
+{
+    min-width: 100px;
+    min-height: 30px;
+    border: 1px solid gray;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+}
+.tab-body
+{
+    min-height: 200px;
+    border:1px solid gray;
+}
