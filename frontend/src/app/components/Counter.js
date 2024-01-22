@@ -18,7 +18,7 @@ export default function Counter()
     return (<div>
         Counter {count}
         <br/>
-        Date {date.toString()}
+       {/* Date {date.toString()}*/}
         <button type={"button"}
             onClick={incHandler}>+</button>
         <button type={"button"}

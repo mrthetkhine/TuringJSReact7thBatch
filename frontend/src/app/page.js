@@ -24,6 +24,13 @@ import TodoListDemo from "./components/rendering/TodoListDemo";
 import FormDemo from "./components/form/FormDemo";
 import TabDemo from "./components/tab/TabDemo";
 import TodoVersion2 from "./components/rendering/TodoVersion2";
+import RenderingDemo from "./components/rendering/RenderingDemo";
+import Fancy from "./components/rendering/Fancy";
+import DifferentRoot from "./components/rendering/DifferentRoot";
+import DifferentProperty from "./components/rendering/DifferentProperty";
+import ChildWithKey from "./components/rendering/ChildWithKey";
+import CounterWithReducer from "./components/reducer/CounterWithReducer";
+import TodoWithReducer from "./components/reducer/TodoWithReducer";
 export default function Home() {
     console.log('CreateElement ',React.createElement);
 
@@ -85,7 +92,19 @@ export default function Home() {
                   Page 3
               </div>
           </TabDemo>*/}
-          <TodoVersion2/>
+         {/* <TodoVersion2/>*/}
+         {/* <Counter/>
+          <br/>
+          <Counter/>
+          <br/>
+          <Counter/>*/}
+         {/* <RenderingDemo/>*/}
+         {/* <Fancy/>*/}
+         {/* <DifferentRoot/>*/}
+        {/* <DifferentProperty/>*/}
+         {/* <ChildWithKey/>*/}
+        {/*  <CounterWithReducer/>*/}
+        <TodoWithReducer/>
       </div>
     </main>
   )
