@@ -1,21 +1,11 @@
 "use client"
 import  './../rendering/TodoV2.css'
-import {useReducer, useState} from "react";
+import {useContext, useReducer, useState} from "react";
+import TodoContext from "./TodoContext";
+import TodoStateContext from "./TodoStateContext";
+import DispatchContext from "./DispatchContext";
 
-let initial = [
-    {
-        id:1,
-        title: 'Task 1'
-    },
-    {
-        id:2,
-        title: 'Task 2'
-    },
-    {
-        id:3,
-        title: 'Task 3'
-    },
-]
+
 let id= 4;
 function nextTodo(title)
 {
@@ -65,7 +55,17 @@ function TodoItem({todo,onDelete,onUpdate}) {
     </div>;
 }
 
-function TodoInput({addNewTodo}) {
+function TodoInput() {
+    const dispatch = useContext(DispatchContext);
+    const addNewTodo=(title)=>
+    {
+        console.log('AddNew Todo in parent ',title);
+        let newTodo = nextTodo(title);
+        dispatch({
+            type:'ADD_TODO',
+            payload : newTodo
+        });
+    }
     const [todoText,setTodoText] = useState('');
     const handleChange=(e)=>{
         setTodoText(e.target.value);
@@ -83,34 +83,14 @@ function TodoInput({addNewTodo}) {
                 onClick={addBtnHandler}>Add</button>
     </form>;
 }
-function todoReducer(state,action) {
-    console.log('State ',state, ' Action ',action);
-    switch (action.type)
-    {
-        case 'ADD_TODO':
-            return [...state,action.payload];
-        case 'DELETE_TODO':
-            return state.filter(todo=>todo.id!=action.payload.id);
-        case 'UPDATE_TODO':
-            return state.map(todo=>todo.id==action.payload.id?action.payload:todo);
-        default:
-            return state;
-    }
 
-}
 
 export default function TodoWithReducer()
 {
-    const [todos,dispatch] = useReducer(todoReducer,initial);
-    const addNewTodo=(title)=>
-    {
-        console.log('AddNew Todo in parent ',title);
-        let newTodo = nextTodo(title);
-        dispatch({
-            type:'ADD_TODO',
-            payload : newTodo
-        });
-    }
+
+    const todos = useContext(TodoStateContext);
+    const dispatch = useContext(DispatchContext);
+
     const deleteTodoHandler = (todo)=>{
         console.log('Deletetodo ',todo);
         dispatch({
@@ -127,7 +107,7 @@ export default function TodoWithReducer()
     }
     return (<div>
         <TodoInput
-            addNewTodo={addNewTodo}/>
+           />
         <hr/>
         {todos.map(todo => <TodoItem key={todo.id}
                                      onDelete = {deleteTodoHandler}

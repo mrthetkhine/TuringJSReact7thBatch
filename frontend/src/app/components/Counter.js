@@ -1,10 +1,16 @@
 "use client";
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 
 export default function Counter()
 {
     const [count,setCount] = useState(0);
     const [date,setDate] = useState(new Date())
+    useEffect(()=>{
+        console.log('Counter useEffect');
+        return ()=>{
+          console.log('Counter useEffect cleanup');
+        };
+    },[]);
     console.log('Re render');
     const incHandler = ()=>{
         //count++;

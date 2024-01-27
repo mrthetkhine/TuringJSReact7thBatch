@@ -31,6 +31,15 @@ import DifferentProperty from "./components/rendering/DifferentProperty";
 import ChildWithKey from "./components/rendering/ChildWithKey";
 import CounterWithReducer from "./components/reducer/CounterWithReducer";
 import TodoWithReducer from "./components/reducer/TodoWithReducer";
+import ContextDemo from "./components/context/ContextDemo";
+import TodoCount from "./components/reducer/TodoCount";
+import ReducerWithContext from "./components/reducer/ReducerWithContext";
+import RefDemo from "./components/ref/RefDemo";
+import FocusInputDemo from "./components/ref/FocusInputDemo";
+import OtherDOMRefDemo from "./components/ref/OtherDOMRefDemo";
+import DatePicker from "./components/ref/DatePicker";
+import EffectDemo from "./components/EffectDemo";
+import DataFetchDemo from "./components/DataFetchDemo";
 export default function Home() {
     console.log('CreateElement ',React.createElement);
 
@@ -104,7 +113,17 @@ export default function Home() {
         {/* <DifferentProperty/>*/}
          {/* <ChildWithKey/>*/}
         {/*  <CounterWithReducer/>*/}
-        <TodoWithReducer/>
+
+
+          {/*<ContextDemo/>*/}
+        {/*  <ReducerWithContext/>*/}
+        {/*  <RefDemo/>*/}
+       {/*   <FocusInputDemo/>*/}
+       {/*   <OtherDOMRefDemo/>*/}
+       {/*   <DatePicker/>*/}
+       {/*   <EffectDemo/>*/}
+        {/*  <DataFetchDemo/>*/}
+          <DifferentRoot/>
       </div>
     </main>
   )
