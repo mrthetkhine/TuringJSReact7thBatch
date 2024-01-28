@@ -40,6 +40,8 @@ import OtherDOMRefDemo from "./components/ref/OtherDOMRefDemo";
 import DatePicker from "./components/ref/DatePicker";
 import EffectDemo from "./components/EffectDemo";
 import DataFetchDemo from "./components/DataFetchDemo";
+import CustomHook from "./components/hook/CustomHook";
+import RandomProfile from "./components/hook/RandomProfile";
 export default function Home() {
     console.log('CreateElement ',React.createElement);
 
@@ -116,14 +118,18 @@ export default function Home() {
 
 
           {/*<ContextDemo/>*/}
-        {/*  <ReducerWithContext/>*/}
+
         {/*  <RefDemo/>*/}
        {/*   <FocusInputDemo/>*/}
        {/*   <OtherDOMRefDemo/>*/}
        {/*   <DatePicker/>*/}
        {/*   <EffectDemo/>*/}
         {/*  <DataFetchDemo/>*/}
-          <DifferentRoot/>
+        {/*  <DifferentRoot/>*/}
+          {/*<RandomProfile/>
+          <CustomHook/>
+*/}
+          <ReducerWithContext/>
       </div>
     </main>
   )

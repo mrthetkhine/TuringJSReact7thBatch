@@ -5,6 +5,8 @@ import React, {useContext, useReducer} from "react";
 import TodoContext from './TodoContext';
 import TodoStateContext from "./TodoStateContext";
 import DispatchContext from "./DispatchContext";
+import useCustomReducer from "../hook/useCustomReducer";
+
 function todoReducer(state,action) {
     console.log('State ',state, ' Action ',action);
     switch (action.type)
@@ -36,7 +38,8 @@ export default function ReducerWithContext()
             title: 'Task 3 data by todo context'
         },
     ]
-    const [todos,dispatch] = useReducer(todoReducer,initial);
+    //const [todos,dispatch] = useReducer(todoReducer,initial);
+    const [todos,dispatch] = useCustomReducer(todoReducer,initial);
     return(<div>
         <TodoStateContext.Provider value={todos}>
             <DispatchContext.Provider value={dispatch}>
