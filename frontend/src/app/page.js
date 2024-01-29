@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 //import styles from './page.module.css'
 import HelloWorld,{Another} from "./components/HelloWorld";
 import JsxDemo from "./components/JsxDemo";
@@ -42,6 +43,13 @@ import EffectDemo from "./components/EffectDemo";
 import DataFetchDemo from "./components/DataFetchDemo";
 import CustomHook from "./components/hook/CustomHook";
 import RandomProfile from "./components/hook/RandomProfile";
+import BasicForm from "./components/form/BasicForm";
+import {ValidationSchemaExample} from "./components/form/ValidationSchemaExample";
+import CustomFormik from "./components/form/CustomFormik";
+import CustomFormikDemo from "./components/form/CustomFormikDemo";
+import PortalDemo from "./components/PortalDemo";
+import IdDemo from "./components/hook/IdDemo";
+import CallBackProblem from "./components/hook/CallBackProblem";
 export default function Home() {
     console.log('CreateElement ',React.createElement);
 
@@ -129,7 +137,13 @@ export default function Home() {
           {/*<RandomProfile/>
           <CustomHook/>
 */}
-          <ReducerWithContext/>
+         {/* <ReducerWithContext/>*/}
+         {/* <BasicForm/>*/}
+        {/*  <ValidationSchemaExample/>*/}
+        {/*  <CustomFormikDemo/>*/}
+        {/*  <PortalDemo/>*/}
+        {/*  <IdDemo/>*/}
+          <CallBackProblem/>
       </div>
     </main>
   )
