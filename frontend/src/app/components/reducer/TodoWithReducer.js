@@ -46,9 +46,11 @@ function TodoItem({todo,onDelete,onUpdate}) {
         }
         &nbsp;
         <button type={"button"}
+                className={"btn btn-primary"}
                 onClick={deleteHandler}>Delete</button>
         &nbsp;
         <button type={"button"}
+                className={"btn btn-primary"}
                 onClick={editHandler}>
             {editMode?'Update':'Edit'}
         </button>
@@ -78,13 +80,35 @@ function TodoInput() {
         New todo &nbsp;
         <input type={"text"}
                value={todoText}
+               className={"form-control"}
                onChange={handleChange}/> &nbsp;
         <button type={"button"}
+                className={"btn btn-primary"}
                 onClick={addBtnHandler}>Add</button>
     </form>;
 }
 
+function Filter()
+{
+    const dispatch = useContext(DispatchContext);
+    const [filter,setFilter] = useState('');
+    const changeHandler = (event)=>{
+        setFilter(event.target.value);
+        dispatch({
+            type:'ADD_FILTER',
+            payload : event.target.value
+        });
+    }
 
+    return (<div>
+        Filter
+        <input type={"text"}
+                value={filter}
+               className={"form-control"}
+               onChange={changeHandler}
+              /> &nbsp;
+    </div>)
+}
 export default function TodoWithReducer()
 {
 
@@ -105,11 +129,13 @@ export default function TodoWithReducer()
             payload : todo
         })
     }
+    let items= todos.items.filter(item=>item.title.startsWith(todos.filter));
     return (<div>
         <TodoInput
            />
         <hr/>
-        {todos.map(todo => <TodoItem key={todo.id}
+        <Filter/>
+        {items.map(todo => <TodoItem key={todo.id}
                                      onDelete = {deleteTodoHandler}
                                      onUpdate ={updateHandler}
                                      todo={todo}/>)}

@@ -11,12 +11,24 @@ function todoReducer(state,action) {
     console.log('State ',state, ' Action ',action);
     switch (action.type)
     {
+        case 'ADD_FILTER':
+            return {
+                filter:action.payload,
+                items: state.items
+            };
         case 'ADD_TODO':
-            return [...state,action.payload];
+            return { filter:state.filter,
+                    items: [...state.items,action.payload]};
         case 'DELETE_TODO':
-            return state.filter(todo=>todo.id!=action.payload.id);
+            return {
+                filter:state.filter,
+                items: state.items.filter(todo=>todo.id!=action.payload.id)
+            };
         case 'UPDATE_TODO':
-            return state.map(todo=>todo.id==action.payload.id?action.payload:todo);
+            return {
+                filter:state.filter,
+                items:state.items.map(todo=>todo.id==action.payload.id?action.payload:todo)
+            };
         default:
             return state;
     }
@@ -24,7 +36,9 @@ function todoReducer(state,action) {
 }
 export default function ReducerWithContext()
 {
-    let initial = [
+    let initial = {
+        filter:'',
+        items:[
         {
             id:1,
             title: 'Task 1'
@@ -38,6 +52,7 @@ export default function ReducerWithContext()
             title: 'Task 3 data by todo context'
         },
     ]
+    }
     //const [todos,dispatch] = useReducer(todoReducer,initial);
     const [todos,dispatch] = useCustomReducer(todoReducer,initial);
     return(<div>

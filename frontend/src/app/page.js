@@ -50,6 +50,10 @@ import CustomFormikDemo from "./components/form/CustomFormikDemo";
 import PortalDemo from "./components/PortalDemo";
 import IdDemo from "./components/hook/IdDemo";
 import CallBackProblem from "./components/hook/CallBackProblem";
+import MemoDemo from "./components/hook/MemoDemo";
+import LayoutEffectDemo from "./components/hook/LayoutEffectDemo";
+import DefferedValueDemo from "./components/hook/DefferedValueDemo";
+import ImperativeHandleDemo from "./components/hook/ImperativeHandleDemo";
 export default function Home() {
     console.log('CreateElement ',React.createElement);
 
@@ -143,7 +147,13 @@ export default function Home() {
         {/*  <CustomFormikDemo/>*/}
         {/*  <PortalDemo/>*/}
         {/*  <IdDemo/>*/}
-          <CallBackProblem/>
+      {/*    <CallBackProblem/>*/}
+      {/*    <CustomHook/>*/}
+       {/*   <MemoDemo/>*/}
+        {/*  <LayoutEffectDemo/>*/}
+        {/*  <DefferedValueDemo/>*/}
+      {/*  <ImperativeHandleDemo/>*/}
+          <ReducerWithContext/>
       </div>
     </main>
   )
