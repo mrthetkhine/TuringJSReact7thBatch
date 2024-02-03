@@ -54,6 +54,14 @@ import MemoDemo from "./components/hook/MemoDemo";
 import LayoutEffectDemo from "./components/hook/LayoutEffectDemo";
 import DefferedValueDemo from "./components/hook/DefferedValueDemo";
 import ImperativeHandleDemo from "./components/hook/ImperativeHandleDemo";
+import UserList from "./components/pattern/hoc/UserList";
+import TodoList from "./components/pattern/hoc/TodoList";
+import HocDemo from "./components/pattern/hoc/HocDemo";
+import UserListWithFetchHook from "./components/pattern/hook/UserListWithFetchHook";
+import FormWithUseInputHookDemo from "./components/pattern/hook/FormWithUseInputHookDemo";
+import DisplayMousePosition from "./components/pattern/render-property/DisplayMousePosition";
+import RenderPropertyDemo from "./components/pattern/render-property/RenderPropertyDemo";
+import FormikRenderPropDemo from "./components/pattern/render-property/FormikRenderPropDemo";
 export default function Home() {
     console.log('CreateElement ',React.createElement);
 
@@ -153,7 +161,15 @@ export default function Home() {
         {/*  <LayoutEffectDemo/>*/}
         {/*  <DefferedValueDemo/>*/}
       {/*  <ImperativeHandleDemo/>*/}
-          <ReducerWithContext/>
+      {/*    <ReducerWithContext/>*/}
+       {/*   <UserList/>*/}
+         {/* <TodoList/>*/}
+        {/*  <HocDemo/>*/}
+        {/*  <UserListWithFetchHook/>*/}
+        {/*  <FormWithUseInputHookDemo/>*/}
+        {/*  <DisplayMousePosition/>*/}
+         {/* <RenderPropertyDemo/>*/}
+          <FormikRenderPropDemo/>
       </div>
     </main>
   )
