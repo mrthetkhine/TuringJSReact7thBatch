@@ -4,9 +4,9 @@ import {Todo} from "@/lib/redux";
 
 export const loadAllTodoAsync = createAppAsyncThunk(
     "todo/loadAllTodoAsync",
-    async ():Promise<Todo[]> => {
+    async():Promise<Todo[]>=>{
+        console.log('load All todo async');
         const response = await loadAllTodos();
         console.log('Response ',response);
         return response;
-    }
-);
+    });

@@ -13,11 +13,12 @@ import {
 /* Instruments */
 import { reducer } from "./rootReducer";
 import { middleware } from "./middleware";
+import {userApi} from "@/lib/redux/services/users";
 
 export const reduxStore = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(middleware);
+    return getDefaultMiddleware().concat(middleware,userApi.middleware);
   },
 });
 export const useDispatch = () => useReduxDispatch<ReduxDispatch>();

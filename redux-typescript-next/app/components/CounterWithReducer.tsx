@@ -4,11 +4,11 @@ import {useReducer} from "react";
 interface State {
     count: number
 };
-type CounterActionType = "reset" | "setCount";
+//type CounterActionType = "reset" | "setCount";
 type CounterAction =
-    | { type: CounterActionType }
+    | { type: "reset" }
     | {
-        type: CounterActionType;
+        type: "setCount";
         value: State["count"]
         }
 

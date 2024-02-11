@@ -1,6 +1,6 @@
 
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {loadAllTodoAsync} from "@/lib/redux";
+import {loadAllTodoAsync} from "./thunks";
 
 export interface Todo {
     "userId": number;
@@ -33,6 +33,7 @@ const initialState: TodoList = {
        }
    ]
 };
+//console.log('loadAllTodoAsync ',loadAllTodoAsync);
 export const todoSlice = createSlice({
     name: "todo",
     initialState,
@@ -47,22 +48,16 @@ export const todoSlice = createSlice({
             state.todos = state.todos.map(item=>item.id==action.payload.id?action.payload:item);
         },
     },
-    /*
-    extraReducers: builder => {
-        // Use `extraReducers` to handle actions that were generated
-        // _outside_ of the slice, such as thunks or in other slices
-
+    extraReducers: (builder) => {
         builder
-            .addCase(loadAllTodoAsync.pending, (state, action) => {
-                //state.status = 'loading'
+            .addCase(loadAllTodoAsync.pending, (state) => {
+                //state.status = "loading";
+                console.log('loadAllTodoAsync.pending');
             })
-            // Pass the generated action creators to `.addCase()`
             .addCase(loadAllTodoAsync.fulfilled, (state, action) => {
-                // Same "mutating" update syntax thanks to Immer
-                //state.status = 'succeeded'
-                console.log('loadAllTodoAsync.fulfilled ',action.payload);
-                state.todos = action.payload
-            })
-
-    }*/
+                //state.status = "idle";
+                console.log('fulfilled ',action);
+                state.todos = action.payload;
+            });
+    },
 });

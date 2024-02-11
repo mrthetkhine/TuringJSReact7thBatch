@@ -5,6 +5,8 @@ import Greeting from "@/app/components/Greeting";
 import CounterWithReducer from "@/app/components/CounterWithReducer";
 import CustomContainer from "@/app/components/CustomContainer";
 import TodoUI from "@/app/components/TodoUI/TodoUI";
+import CustomFetchDemo from "@/app/components/CustomFetchDemo";
+import UserWithRTKQueryDemo from "@/app/components/UserWithRTKQueryDemo";
 
 export default function IndexPage() {
  /* return <Counter />;*/
@@ -16,7 +18,9 @@ export default function IndexPage() {
       <h2>Child 2</h2>
     </CustomContainer>*/}
    {/* <Counter />*/}
-    <TodoUI/>
+    {/*<TodoUI/>*/}
+    {/*<CustomFetchDemo/>*/}
+    <UserWithRTKQueryDemo/>
   </div>);
 }
 

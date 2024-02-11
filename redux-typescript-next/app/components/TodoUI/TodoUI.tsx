@@ -1,5 +1,6 @@
 "use client";
-import {counterSlice, selectTodo, Todo, todoSlice, useDispatch, useSelector} from "@/lib/redux";
+import {counterSlice, loadAllTodoAsync, selectTodo, Todo, todoSlice, useDispatch, useSelector} from "@/lib/redux";
+import {useEffect} from "react";
 
 let id = 4;
 function nextTodo()
@@ -15,9 +16,14 @@ export default function TodoUI()
 {
     const dispatch = useDispatch();
     const todo = useSelector(selectTodo);
+
+    useEffect(()=>{
+        dispatch(loadAllTodoAsync());
+    },[]);
     const addTodoHandler = ()=>{
         const newTodo = nextTodo();
         dispatch(todoSlice.actions.addTodo(newTodo));
+        //dispatch(loadAllTodoAsync());
     }
     const deleteTodoHandler = (todo:Todo)=>{
         dispatch(todoSlice.actions.deleteTodo(todo));
