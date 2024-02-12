@@ -7,6 +7,9 @@ export const userApi = createApi({
         getAllUser: builder.query<Array<UserModel>>({
             query: () => `users`,
         }),
+        getUserById:builder.query<UserModel,number>({
+            query: (userId:number) => `users/${userId}`,
+        }),
     }),
 })
-export const { useGetAllUserQuery } = userApi
+export const { useGetAllUserQuery,useGetUserByIdQuery } = userApi

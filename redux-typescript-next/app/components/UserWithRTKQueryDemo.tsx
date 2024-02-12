@@ -14,6 +14,7 @@ export default function UserWithRTKQueryDemo()
                 {
                     data.map(user=><div key={user.id}>
                         {user.name}
+
                     </div>)
                 }
             </>
