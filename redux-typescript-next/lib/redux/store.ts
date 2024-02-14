@@ -14,11 +14,12 @@ import {
 import { reducer } from "./rootReducer";
 import { middleware } from "./middleware";
 import {userApi} from "@/lib/redux/services/users";
+import {backendApi} from "@/lib/redux/services/backendApi";
 
 export const reduxStore = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(middleware,userApi.middleware);
+    return getDefaultMiddleware().concat(middleware).concat(userApi.middleware).concat(backendApi.middleware);
   },
 });
 export const useDispatch = () => useReduxDispatch<ReduxDispatch>();

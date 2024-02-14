@@ -12,12 +12,13 @@ let reviewRouter = require('./routes/reviews');
 const { db } = require('./config/database');
 let auth = require('./middleware/auth');
 const mongoose = require('mongoose');
+const cors = require("cors");
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+app.use(cors());
 app.use(customLogger.logger);
 app.use(logger('dev'));
 app.use(express.json());

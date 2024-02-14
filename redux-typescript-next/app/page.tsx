@@ -8,6 +8,8 @@ import TodoUI from "@/app/components/TodoUI/TodoUI";
 import CustomFetchDemo from "@/app/components/CustomFetchDemo";
 import UserWithRTKQueryDemo from "@/app/components/UserWithRTKQueryDemo";
 import ShowUserWithRTKQuery from "@/app/components/ShowUserWithRTKQuery";
+import UserCount from "@/app/components/UserCount";
+import TodoListWithRTK from "@/app/components/TodoWithRTK/TodoListWithRTK";
 
 export default function IndexPage() {
  /* return <Counter />;*/
@@ -21,8 +23,10 @@ export default function IndexPage() {
    {/* <Counter />*/}
     {/*<TodoUI/>*/}
    {/* <CustomFetchDemo/>*/}
-  {/*  <UserWithRTKQueryDemo/>*/}
-  <ShowUserWithRTKQuery/>
+    <UserCount/>
+   {/* <UserWithRTKQueryDemo/>*/}
+ {/* <ShowUserWithRTKQuery/>*/}
+   {/* <TodoListWithRTK/>*/}
   </div>);
 }
 
