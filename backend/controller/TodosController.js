@@ -73,11 +73,14 @@ async function updateTodo(req,res)
 async function deleteTodo(req,res) {
     let todoId = req.params['todoId'];
     try {
-        let deletedTodo = await todoService.deleteTodoById(todoId);
-        if(deletedTodo)
-        {
-            res.json(deletedTodo);
-        }
+        setTimeout(async ()=>{
+            let deletedTodo = await todoService.deleteTodoById(todoId);
+            if(deletedTodo)
+            {
+                res.json(deletedTodo);
+            }
+        },2000);
+
     } catch (e)
     {
         res.status(400).json({

@@ -1,23 +1,28 @@
 "use client";
-import {useGetAllTodoQuery,useAddTodoMutation} from "@/lib/redux/services/backendApi";
+import {useGetAllTodoQuery, useAddTodoMutation, useDeleteTodoMutation} from "@/lib/redux/services/backendApi";
 import {useState} from "react";
+import {Todo} from "@/lib/redux/services/types";
 
 
 export default function TodoListWithRTK()
 {
-    const { data, error, isLoading } = useGetAllTodoQuery();
+    const { data, error, isLoading } = useGetAllTodoQuery(undefined,{
+        //pollingInterval: 2000,
+    });
     const [addTodo, result] = useAddTodoMutation();
+    const [deleteTodo,deleteResult] = useDeleteTodoMutation();
     const [title,setTitle] = useState('');
-    const onDeleteHandler= ()=>{
+    const onDeleteHandler= (todo:Todo)=>{
         console.log('On delete');
-        //deleteUserById(1);
+        deleteTodo(todo._id);
     };
     const btnAddHandler = ()=>{
       console.log('Btn Add ',title);
       addTodo({
           title,
           completed:false,
-      });
+      }).unwrap()
+        .then(data=>console.log('Add ok ',data),(error)=>console.log('Add error',error))  ;
     };
     return (<div>
         {error ? (
@@ -41,7 +46,7 @@ export default function TodoListWithRTK()
                         {todo.title}
                         &nbsp;
                         <button type={"button"}
-                                onClick={onDeleteHandler}
+                                onClick={(event)=>onDeleteHandler(todo)}
                                 className={"btn btn-primary"}>
                             Delete
                         </button>

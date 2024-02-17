@@ -22,9 +22,67 @@ export const backendApi = createApi({
                 method: 'POST',
                 body:todo,
             }),
-            invalidatesTags:['Todo']
-        }),
+            //invalidatesTags:['Todo'],
+            async onQueryStarted({ ...patch }, { dispatch, queryFulfilled }) {
+                try {
+                    const {data:newTodo} = await queryFulfilled
+                    console.log('New todo ',newTodo);
 
+                    const patchResult = dispatch(
+                        backendApi.util.updateQueryData('getAllTodo', undefined, (draft) => {
+                            //console.log('Draft ',draft);
+                            //console.log('Patch ',patch);
+                            draft.push(newTodo);
+                        }),
+                    );
+
+                } catch {}
+            }
+        }),
+        deleteTodo:builder.mutation<Todo, number>({
+            query: (id:number) => ({
+                url: `/api/todos/${id}`,
+                method: 'DELETE',
+
+            }),
+            //invalidatesTags:['Todo'],
+            //Pessimistic UI Rendering
+            /*
+            async onQueryStarted({ ...patch }, { dispatch, queryFulfilled }) {
+                try {
+                    const {data:deletedTodo} = await queryFulfilled
+                    console.log('Deleted todo ',deletedTodo);
+                    const patchResult = dispatch(
+                        backendApi.util.updateQueryData('getAllTodo', undefined, (draft) => {
+                            //console.log('Draft ',draft);
+                            draft = draft.filter(todo=>todo._id != deletedTodo._id);
+                            //console.log('Draft ',draft);
+                            return draft;
+                        }),
+                    );
+
+                } catch {}
+            },*/
+            //Optimistic
+
+            async onQueryStarted(id:number , { dispatch, queryFulfilled }) {
+                console.log('Id ',id);
+                const patchResult = dispatch(
+                    backendApi.util.updateQueryData('getAllTodo', undefined, (draft) => {
+                        //console.log('Draft ',draft);
+                        draft = draft.filter(todo=>todo._id != id);
+                        //console.log('Draft ',draft);
+                        return draft;
+                    }),
+                );
+                try {
+                    const {data:deletedTodo} = await queryFulfilled
+                    console.log('Deleted todo ',deletedTodo);
+                } catch {
+                    patchResult.undo();
+                }
+            }
+        }),
     }),
 });
-export const { useGetAllTodoQuery,useAddTodoMutation } = backendApi;
+export const { useGetAllTodoQuery,useAddTodoMutation,useDeleteTodoMutation } = backendApi;

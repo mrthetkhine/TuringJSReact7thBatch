@@ -23,10 +23,10 @@ export default function IndexPage() {
    {/* <Counter />*/}
     {/*<TodoUI/>*/}
    {/* <CustomFetchDemo/>*/}
-    <UserCount/>
-   {/* <UserWithRTKQueryDemo/>*/}
+   {/* <UserCount/>
+    <UserWithRTKQueryDemo/>*/}
  {/* <ShowUserWithRTKQuery/>*/}
-   {/* <TodoListWithRTK/>*/}
+    <TodoListWithRTK/>
   </div>);
 }
 
