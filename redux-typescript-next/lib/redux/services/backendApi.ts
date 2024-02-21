@@ -1,11 +1,22 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import {Todo} from "@/lib/redux/services/types";
 import {userApi} from "@/lib/redux/services/users";
+import {RootState} from "@reduxjs/toolkit/dist/query/core/apiState";
 
 export const backendApi = createApi({
     reducerPath: 'backendApi',
     tagTypes: ['Todo'],
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/' }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: 'http://localhost:8080/',
+        prepareHeaders: (headers, {getState}) => {
+            // By default, if we have a token in the store, let's use that for authenticated requests
+            const state = (getState() as RootState);
+            console.log('prepareHeaders State ', state);
+
+            return headers;
+
+        }
+    }),
     endpoints: (builder) => ({
         getAllTodo: builder.query<Array<Todo>>({
             query: () => `/api/todos`,
@@ -39,8 +50,8 @@ export const backendApi = createApi({
                 } catch {}
             }
         }),
-        deleteTodo:builder.mutation<Todo, number>({
-            query: (id:number) => ({
+        deleteTodo:builder.mutation<Todo, string>({
+            query: (id:string) => ({
                 url: `/api/todos/${id}`,
                 method: 'DELETE',
 
@@ -65,7 +76,7 @@ export const backendApi = createApi({
             },*/
             //Optimistic
 
-            async onQueryStarted(id:number , { dispatch, queryFulfilled }) {
+            async onQueryStarted(id:string , { dispatch, queryFulfilled }) {
                 console.log('Id ',id);
                 const patchResult = dispatch(
                     backendApi.util.updateQueryData('getAllTodo', undefined, (draft) => {

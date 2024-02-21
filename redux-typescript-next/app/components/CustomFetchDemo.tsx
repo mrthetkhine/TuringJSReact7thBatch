@@ -1,5 +1,6 @@
 "use client";
 import useCustomFetch from "@/app/hooks/useCustomFetch";
+import {Todo} from "@/lib/redux/services/types";
 
 export default function CustomFetchDemo()
 {
@@ -12,7 +13,7 @@ export default function CustomFetchDemo()
     {
         return(<div>
             {
-                data.map(item=><div key={item.id}>{item.title}</div>)
+                data.map((item:any)=><div key={item.id}>{item.title}</div>)
             }
         </div>);
     }

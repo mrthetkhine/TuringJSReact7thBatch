@@ -31,7 +31,7 @@ const todos =[
         "completed": false
     },
 ];
-export async function GET(req: Request,{ params }: { params: { id: string } }) {
+export async function GET(req: Request,{ params }: { params: { id: number } }) {
 
     const { searchParams } = new URL(req.url);
     const id = searchParams.get('id');

@@ -1,7 +1,8 @@
 "use client";
 
 /* Core */
-import Link from "next/link";
+//import Link from "next/link";
+import { Link } from '@chakra-ui/next-js'
 import { usePathname } from "next/navigation";
 
 /* Instruments */
@@ -14,6 +15,8 @@ export const Nav = () => {
     <nav className={styles.nav}>
       <Link
         className={`${styles.link} ${pathname === "/" ? styles.active : ""}`}
+        color='blue.400'
+        _hover={{ color: 'blue.500' }}
         href="/"
       >
         Home
