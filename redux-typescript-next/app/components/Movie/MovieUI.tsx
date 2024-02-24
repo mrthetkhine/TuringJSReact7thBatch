@@ -2,8 +2,17 @@ import { Button, ButtonGroup } from '@chakra-ui/react';
 import {Movie} from "@/lib/redux/services/types";
 
 import styles from './movie.module.css';
-export default function MovieUI({movie}:{movie:Movie})
+export default function MovieUI({
+                                    movie,
+                                    onDelete,
+                                    }:{
+                                    movie:Movie,
+                                    onDelete:(movie:Movie)=>void
+                                })
 {
+    const deleteHandler=()=>{
+        onDelete(movie);
+    }
     return (<div className={styles.movie}>
        <div className={styles.header}>
            {movie.title}
@@ -19,7 +28,8 @@ export default function MovieUI({movie}:{movie:Movie})
         <div>
             <Button colorScheme='blue'>Edit</Button>
             &nbsp;
-            <Button colorScheme='blue'>Delete</Button>
+            <Button colorScheme='blue'
+                    onClick={deleteHandler}>Delete</Button>
             &nbsp;
             <Button colorScheme='blue'>Details</Button>
         </div>

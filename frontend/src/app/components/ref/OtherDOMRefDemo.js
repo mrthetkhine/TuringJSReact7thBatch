@@ -10,6 +10,7 @@ export default function OtherDOMRefDemo()
 
     function handleClick() {
         inputRef.current.focus();
+
     }
     return(<div>
         <MyInput ref={inputRef}/>

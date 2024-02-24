@@ -5,7 +5,7 @@ import {RootState} from "@reduxjs/toolkit/dist/query/core/apiState";
 
 export const backendApi = createApi({
     reducerPath: 'backendApi',
-    tagTypes: ['Todo'],
+    tagTypes: ['Todo','Movie'],
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:8080/',
         prepareHeaders: (headers, {getState}) => {
