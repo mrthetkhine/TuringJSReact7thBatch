@@ -23,3 +23,9 @@ export interface Movie
     },
     "year": 2025,
 }
+export interface Review
+{
+    "_id"?: string,
+    rating:number,
+    review:string;
+}

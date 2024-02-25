@@ -17,7 +17,7 @@ import {
     });
 }*/
 export default  function Page() {
-    //const router = useRouter();
+    const router = useRouter();
     //const data = await getData();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnHandler = ()=>{
