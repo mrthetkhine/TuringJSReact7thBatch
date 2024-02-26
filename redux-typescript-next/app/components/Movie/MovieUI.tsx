@@ -7,17 +7,17 @@ export default function MovieUI({
     movie:Movie
 })
 {
-    return (<>
-            <div className={styles.header}>
-                {movie.title}
-            </div>
-            <div>
-                {movie.year}
-            </div>
-            <div>
-                Director {movie.director.name}
-                <br/>
-                Phone no {movie.director.phoneNo}
-            </div>
-        </>);
+    return (<div >
+                <div className={styles.header}>
+                    {movie.title}
+                </div>
+                <div>
+                    {movie.year}
+                </div>
+                <div>
+                    Director {movie.director.name}
+                    <br/>
+                    Phone no {movie.director.phoneNo}
+                </div>
+        </div>);
 }

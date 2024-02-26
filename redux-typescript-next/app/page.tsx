@@ -26,7 +26,7 @@ export default function IndexPage() {
    {/* <UserCount/>
     <UserWithRTKQueryDemo/>*/}
  {/* <ShowUserWithRTKQuery/>*/}
-    <TodoListWithRTK/>
+  {/*  <TodoListWithRTK/>*/}
   </div>);
 }
 

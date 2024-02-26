@@ -12,3 +12,12 @@
     font-weight: bolder;
     text-align: center;
 }
+.review
+{
+    border:1px solid gray;
+    border-radius: 10px;
+    min-height: 80px;
+    min-width: 450px;
+    margin-bottom: 5px;
+    padding: 5px;
+}

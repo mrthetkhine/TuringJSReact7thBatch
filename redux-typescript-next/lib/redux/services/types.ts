@@ -25,6 +25,7 @@ export interface Movie
 }
 export interface Review
 {
+    "movie"?:string,
     "_id"?: string,
     rating:number,
     review:string;

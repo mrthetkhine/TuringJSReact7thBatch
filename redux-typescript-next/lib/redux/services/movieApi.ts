@@ -1,6 +1,6 @@
 import {backendApi} from "@/lib/redux/services/backendApi";
 import {Movie, Todo} from "@/lib/redux/services/types";
-const movieApi = backendApi.injectEndpoints({
+export const movieApi = backendApi.injectEndpoints({
     endpoints: (builder) => ({
         getAllMovie: builder.query({
             query: () => '/api/movies',
