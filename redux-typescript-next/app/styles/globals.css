@@ -14,3 +14,6 @@ a {
 * {
   box-sizing: border-box;
 }
+svg.star-svg {
+  display: inline;
+}

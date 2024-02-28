@@ -25,6 +25,7 @@ export default function ReviewUI({
     return (<div className={styles.review}>
                 <div>
                     <Rating
+                        readonly={true}
                         style={{width:'100%'}}
                         onClick={handleRating}
                         initialValue={rating} />

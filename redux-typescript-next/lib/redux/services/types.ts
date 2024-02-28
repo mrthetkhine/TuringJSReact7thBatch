@@ -14,8 +14,8 @@ export interface Todo
 }
 export interface Movie
 {
-    "_id"?: string,
-    "title": string,
+    "_id"?: string;
+    "title": string;
     "director": {
         "name": string,
         "phoneNo": string,
@@ -25,8 +25,17 @@ export interface Movie
 }
 export interface Review
 {
-    "movie"?:string,
-    "_id"?: string,
-    rating:number,
+    "movie"?:string;
+    "_id"?: string;
+    rating:number;
     review:string;
+}
+export interface AuthRequest
+{
+    userName:string;
+    password:string;
+}
+export interface AuthResponse
+{
+    token:string;
 }

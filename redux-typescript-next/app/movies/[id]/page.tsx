@@ -10,13 +10,20 @@ import {Button, useDisclosure} from "@chakra-ui/react";
 import React from "react";
 import ReviewFormDialog from "@/app/movies/[id]/ReviewFormDialog";
 import CustomConfirmDialog from "@/app/components/CustomConfirmDialog";
-import {useGetAllReviewByMovieIdQuery, reviewApi, useDeleteReviewMutation} from "@/lib/redux/services/reviewApi";
+import {
+    useGetAllReviewByMovieIdQuery,
+    reviewApi,
+    useDeleteReviewMutation,
+    useAddReviewMutation
+} from "@/lib/redux/services/reviewApi";
+import {useDispatch} from "@/lib/redux";
 
 let reviews:Array<Review>=[
 
 ]
 export default function Page({ params }: { params: { id: string } }) {
     //console.log('ReviewAPI endpoint ',reviewApi.endpoints);
+
     const { movie} = useGetAllMovieQuery(undefined, {
         selectFromResult: (result) => {
             //console.log('Result ',result);
@@ -26,16 +33,28 @@ export default function Page({ params }: { params: { id: string } }) {
     });
 
     const { data=[], error, isLoading } = useGetAllReviewByMovieIdQuery(params.id);
+    const [addReviewApi,addReviewResult] = useAddReviewMutation();
     const [deleteReviewApi,deleteReviewResult] = useDeleteReviewMutation();
 
     const { isOpen, onOpen, onClose } = useDisclosure();
     const confirmDialog = React.useRef(null);
     const reviewToDelete = React.useRef(null);
+
     //console.log('Movie ',movie);
     const newBtnHandler =()=>{
         console.log('New review handler');
         onOpen();
     };
+    const addReview = (review:Review)=>{
+        console.log('AddReview ',review);
+        review.movie =movie._id;
+        addReviewApi(review)
+            .unwrap()
+            .then(data=>console.log('Add review sucess',data),
+                (error)=>console.log('Add Review error',data) );
+        onClose();
+    };
+
     const onDeleteConfirm = ()=>{
         console.log('OnDelete Confirm ',reviewToDelete.current);
         let reviewJson:any = {
@@ -56,7 +75,8 @@ export default function Page({ params }: { params: { id: string } }) {
         console.log('Dialog ',confirmDialog);
         reviewToDelete.current = review;
         confirmDialog.current.open();
-    }
+    };
+    console.log('Review list ',data);
   return (
     <>
         <div className={styles.movie}>
@@ -71,7 +91,8 @@ export default function Page({ params }: { params: { id: string } }) {
         />
         <ReviewFormDialog
             isOpen={isOpen}
-            onClose={onClose}/>
+            onClose={onClose}
+            addReview={addReview}/>
         <div>
             <Button colorScheme='blue' onClick={newBtnHandler}>
                 New Review

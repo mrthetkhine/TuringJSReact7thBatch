@@ -5,14 +5,17 @@ import {RootState} from "@reduxjs/toolkit/dist/query/core/apiState";
 
 export const backendApi = createApi({
     reducerPath: 'backendApi',
-    tagTypes: ['Todo','Movie'],
+    tagTypes: ['Todo','Movie','Review','Auth'],
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:8080/',
         prepareHeaders: (headers, {getState}) => {
             // By default, if we have a token in the store, let's use that for authenticated requests
             const state = (getState() as RootState);
             console.log('prepareHeaders State ', state);
-
+            if(state.auth.token)
+            {
+                headers.set('Authorization', 'Bearer '+state.auth.token);
+            }
             return headers;
 
         }

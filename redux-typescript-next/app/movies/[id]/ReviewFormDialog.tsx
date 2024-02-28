@@ -14,6 +14,7 @@ import {Field, Form, Formik} from "formik";
 import styles from "@/app/movies/movie.module.css";
 import React, {useState} from "react";
 import {Rating} from "react-simple-star-rating";
+import {Review} from "@/lib/redux/services/types";
 
 const ReviewSchema = Yup.object().shape({
     review: Yup.string()
@@ -27,9 +28,11 @@ const ReviewSchema = Yup.object().shape({
 export default function ReviewFormDialog({
                                              isOpen,
                                              onClose,
+                                             addReview,
                                          }:{
     isOpen:any,
     onClose:any,
+    addReview:(review:Review)=>void,
 })
 {   const [rating, setRating] = useState(0);
     const initialValues = {
@@ -37,9 +40,10 @@ export default function ReviewFormDialog({
         review:'',
     }
     const onSubmitHandler = (values)=>{
-      console.log('Values ',values);
+        values.rating = rating;
+        console.log('Values ',values);
+        addReview(values);
     };
-
 
     // Catch Rating value
     const handleRating = (rate: number) => {

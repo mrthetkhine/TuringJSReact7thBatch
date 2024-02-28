@@ -4,6 +4,7 @@ export const movieApi = backendApi.injectEndpoints({
     endpoints: (builder) => ({
         getAllMovie: builder.query({
             query: () => '/api/movies',
+            providesTags:['Movie']
         }),
         addMovie:builder.mutation<Movie, Partial<Movie>>({
             query: (movie:Partial<Movie>) => ({
