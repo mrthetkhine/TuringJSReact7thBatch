@@ -7,10 +7,11 @@ import { usePathname } from "next/navigation";
 
 /* Instruments */
 import styles from "../styles/layout.module.css";
+import useAuth from "@/app/hooks/useAuth";
 
 export const Nav = () => {
   const pathname = usePathname();
-
+  const loggedIn = useAuth();
   return (
     <nav className={styles.nav}>
       <Link
@@ -21,7 +22,7 @@ export const Nav = () => {
       >
         Home
       </Link>
-        <Link
+        { !loggedIn && <Link
             className={`${styles.link} ${
                 pathname === "/login" ? styles.active : ""
             }`}
@@ -29,30 +30,39 @@ export const Nav = () => {
         >
             Login
         </Link>
-        <Link
-            className={`${styles.link} ${
-                pathname === "/login" ? styles.active : ""
-            }`}
-            href="/logout"
-        >
-            Logout
-        </Link>
-        <Link
-            className={`${styles.link} ${
-                pathname === "/movies" ? styles.active : ""
-            }`}
-            href="/movies"
-        >
-            Movies
-        </Link>
-        <Link
-            className={`${styles.link} ${
-                pathname === "/dashboard/home" ? styles.active : ""
-            }`}
-            href="/dashboard/home"
-        >
-            Dashboard home
-        </Link>
+        }
+        {
+            loggedIn && <Link
+                className={`${styles.link} ${
+                    pathname === "/login" ? styles.active : ""
+                }`}
+                href="/logout"
+            >
+                Logout
+            </Link>
+        }
+        {
+            loggedIn && <Link
+                className={`${styles.link} ${
+                    pathname === "/movies" ? styles.active : ""
+                }`}
+                href="/movies"
+            >
+                Movies
+            </Link>
+        }
+        {
+            loggedIn && <Link
+                className={`${styles.link} ${
+                    pathname === "/dashboard/home" ? styles.active : ""
+                }`}
+                href="/dashboard/home"
+            >
+                Dashboard home
+            </Link>
+
+        }
+
       <Link
         className={`${styles.link} ${
           pathname === "/verify" ? styles.active : ""

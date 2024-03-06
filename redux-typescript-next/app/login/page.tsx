@@ -8,7 +8,8 @@ import {useAddReviewMutation} from "@/lib/redux/services/reviewApi";
 import {useLoginMutation} from "@/lib/redux/services/authApi";
 import {authSlice, selectAuth, selectCount, useDispatch, useSelector} from "@/lib/redux";
 import { useRouter } from 'next/navigation'
-
+import { useSearchParams } from 'next/navigation';
+import {red} from "next/dist/lib/picocolors";
 const UserSchema = Yup.object().shape({
     userName: Yup.string()
         .min(2, 'Too Short!')
@@ -24,13 +25,23 @@ export default function Page()
     const [loginApi,loginResult] = useLoginMutation();
     const dispatch = useDispatch();
     const auth = useSelector(selectAuth);
-    const router =useRouter();
+    const searchParams = useSearchParams();
 
+    const router =useRouter();
+    const redirectUrl = searchParams.get('redirectUrl');
     useEffect(()=>{
-        console.log('Auth ',auth);
+        console.log('Auth ',auth, ' redirect url ',redirectUrl);
         if(auth.token)
         {
-            router.push('/');
+            if(redirectUrl)
+            {
+                router.push(redirectUrl);
+            }
+            else
+            {
+                router.push('/');
+            }
+
         }
     },[]);
 
@@ -43,7 +54,15 @@ export default function Page()
         console.log('Login success ', data);
         setLoginError(false);
         dispatch(authSlice.actions.login(data));
-        router.push('/');
+        if(redirectUrl)
+        {
+            router.push(redirectUrl);
+        }
+        else
+        {
+            router.push('/');
+        }
+
     }
 
     const onSubmitHandler = (values:any)=>{

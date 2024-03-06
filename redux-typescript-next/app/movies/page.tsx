@@ -4,7 +4,7 @@ import React, {useRef, useState} from "react";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { ButtonGroup, useDisclosure} from '@chakra-ui/react'
-
+import IsAuth from "@/app/components/Auth/IsAuth";
 import {
     Box,
     Button,
@@ -47,7 +47,7 @@ console.log('styles ',styles);
 const movies:Array<Movie> = [
 
 ]
-export default function MoviePage() {
+function MoviePage() {
     const { data, error, isLoading } = useGetAllMovieQuery();
     const [addMovieApi,addMovieResult] = useAddMovieMutation();
     const [deleteMovieApi,deleteMovieResult] = useDeleteMovieMutation();
@@ -141,3 +141,4 @@ export default function MoviePage() {
     </>
   );
 }
+export default IsAuth(MoviePage);
